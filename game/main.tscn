@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://klkmkrqxyg8u"]
 
 [ext_resource type="Script" uid="uid://fbgcyj45yd5o" path="res://scripts/main.gd" id="1_h2yge"]
-[ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://scripts/turret.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://scripts/cannon.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cnqbwfyxlwgnx" path="res://assets/sprites/platform64.png" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cqrmco1b4jr8l" path="res://assets/sprites/red_cannon.png" id="3_1bvp3"]
 
