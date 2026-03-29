@@ -1,11 +1,29 @@
 [gd_scene format=3 uid="uid://klkmkrqxyg8u"]
 
-[node name="Main" type="Node2D" unique_id=1157097587]
+[ext_resource type="Script" uid="uid://fbgcyj45yd5o" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://turret.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cnqbwfyxlwgnx" path="res://assets/pixelorama/platform64.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cqrmco1b4jr8l" path="res://assets/pixelorama/red_cannon.png" id="3_1bvp3"]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1058245305]
+[node name="Main" type="Node2D" unique_id=1157097587]
+script = ExtResource("1_h2yge")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1404290248]
+layer = -1
+
+[node name="BackgroundRect" type="ColorRect" parent="BackgroundLayer" unique_id=1058245305]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.7877592, 0.78775924, 0.787759, 1)
+color = Color(0.06053035, 0.06053035, 0.060530342, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TurretPlatform" type="Sprite2D" parent="." unique_id=29566080]
+position = Vector2(570, 325)
+texture = ExtResource("2_1bvp3")
+
+[node name="Cannon" type="Sprite2D" parent="TurretPlatform" unique_id=278762946]
+texture = ExtResource("3_1bvp3")
+script = ExtResource("1_ig7tw")
