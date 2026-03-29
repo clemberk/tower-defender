@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1x38mbr2hc2u"
-path="res://.godot/imported/cannon_ball64.png-66d6a5a80992ba5011fd5b339cf93a81.ctex"
+uid="uid://c2mloe75nig2r"
+path="res://.godot/imported/goblin_enemy.png-3927cd8cdd2668192a4f119a1aa5cff5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cannon_ball64.png"
-dest_files=["res://.godot/imported/cannon_ball64.png-66d6a5a80992ba5011fd5b339cf93a81.ctex"]
+source_file="res://assets/sprites/goblin_enemy.png"
+dest_files=["res://.godot/imported/goblin_enemy.png-3927cd8cdd2668192a4f119a1aa5cff5.ctex"]
 
 [params]
 
