@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://cm7v4o2t80ju3"]
 
 [ext_resource type="Script" uid="uid://c1d12t685vlys" path="res://scripts/enemy_base.gd" id="1_8nqel"]
+[ext_resource type="Texture2D" uid="uid://c2mloe75nig2r" path="res://assets/sprites/goblin_enemy.png" id="2_edvsq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xjto"]
+radius = 61.204575
 
 [node name="EnemyBase" type="Area2D" unique_id=583505661]
 script = ExtResource("1_8nqel")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1327293335]
+texture = ExtResource("2_edvsq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1929615640]
 shape = SubResource("CircleShape2D_5xjto")

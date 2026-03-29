@@ -10,6 +10,10 @@ var target = null
 
 func _ready():
 	target = get_tree().current_scene.find_child("TurretPlatform", true, false)
+	if target == null:
+		print("Turret not found")
+	else:
+		print("Ziel erfasst: ", target.name)
 	
 func _process(delta):
 	if target:
@@ -17,6 +21,7 @@ func _process(delta):
 		
 		global_position += direction * speed * delta
 		
+		print(global_position)
 		look_at(target.global_position)
 		
 func take_damage(amount: float):
