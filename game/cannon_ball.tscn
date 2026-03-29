@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b6820cc4colg0"]
+
+[ext_resource type="PackedScene" uid="uid://cawmembslrcjs" path="res://projectile_base.tscn" id="1_gskqm"]
+[ext_resource type="Texture2D" uid="uid://b1x38mbr2hc2u" path="res://cannon_ball64.png" id="2_k1y7j"]
+
+[node name="CannonBall" unique_id=791861610 instance=ExtResource("1_gskqm")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1036752795]
+texture = ExtResource("2_k1y7j")

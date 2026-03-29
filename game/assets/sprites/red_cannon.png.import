@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnqbwfyxlwgnx"
-path="res://.godot/imported/platform64.png-36444c2e9ea33f4d62914882e746d0d0.ctex"
+uid="uid://cqrmco1b4jr8l"
+path="res://.godot/imported/red_cannon.png-41abd2a9a85909d63a42df9427a21de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pixelorama/platform64.png"
-dest_files=["res://.godot/imported/platform64.png-36444c2e9ea33f4d62914882e746d0d0.ctex"]
+source_file="res://assets/sprites/red_cannon.png"
+dest_files=["res://.godot/imported/red_cannon.png-41abd2a9a85909d63a42df9427a21de4.ctex"]
 
 [params]
 

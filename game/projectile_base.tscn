@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cawmembslrcjs"]
+
+[ext_resource type="Script" uid="uid://x6xphol2mqhu" path="res://scripts/projectile_base.gd" id="1_rynoq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
+
+[node name="ProjectileBase" type="Area2D" unique_id=791861610]
+script = ExtResource("1_rynoq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036752795]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1423807646]
+scale = Vector2(2.395, 2.395)
+shape = SubResource("CircleShape2D_qxf0c")

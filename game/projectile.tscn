@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://cawmembslrcjs"]
-
-[node name="Node2D" type="Area2D" unique_id=791861610]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036752795]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1423807646]
