@@ -31,6 +31,10 @@ func _process(delta):
 			attack_target()
 			
 func attack_target():
+	# Check if Scene is currently there
+	if not is_inside_tree():
+		return
+		
 	can_attack_atm = false
 	
 	var attack_dash_direction = (target.global_position - global_position).normalized()
@@ -47,8 +51,11 @@ func attack_target():
 	print("Enemy hits turret! Damage: ", damage_per_hit)
 		
 	tween.tween_property(self, "global_position", original_position, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	var tree = get_tree()
+	if tree:
+		await tree.create_timer(hit_rate).timeout
 		
-	await get_tree().create_timer(hit_rate).timeout
 	can_attack_atm = true
 	
 func take_damage(amount: float):

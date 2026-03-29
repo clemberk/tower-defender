@@ -2,7 +2,7 @@ extends Projectile
 
 func _ready():
 	scale = Vector2(0.5, 0.5)
-	fire_rate = 2.0
+	fire_rate = 5.0
 	speed = 500
 	damage = 25.0
 	

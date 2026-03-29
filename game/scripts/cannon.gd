@@ -4,7 +4,7 @@ extends Sprite2D
 
 var can_shoot_atm: bool = true
 
-func _process(delta):
+func _process(_delta):
 	look_at(get_global_mouse_position())
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot_atm:
