@@ -3,7 +3,6 @@ extends Sprite2D
 @export var cannon_ball_scene = preload("res://cannon_ball.tscn")
 
 var can_shoot_atm: bool = true
-# var projectile_scene = preload("res://projectile.tscn")
 
 func _process(delta):
 	look_at(get_global_mouse_position())
