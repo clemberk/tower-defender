@@ -22,6 +22,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TurretPlatform" type="Sprite2D" parent="." unique_id=29566080]
 position = Vector2(570, 325)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_1bvp3")
 
 [node name="Cannon" type="Sprite2D" parent="TurretPlatform" unique_id=278762946]
