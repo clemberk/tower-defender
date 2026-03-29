@@ -4,7 +4,7 @@ func _ready():
 	# run _ready function of parent class
 	super._ready()
 	
-	scale = Vector2(1.0, 1.0)
+	scale = Vector2(0.75, 0.75)
 	health = 100.0
 	speed = 100.0
 	damage_per_hit = 2.0
