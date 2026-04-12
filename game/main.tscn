@@ -39,6 +39,17 @@ offset_top = 5.0
 offset_right = 204.0
 offset_bottom = 21.0
 
+[node name="WealthLabel" type="Label" parent="UI/UIContainer" unique_id=428341457]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Coins: 0"
+
 [node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("2_h2yge")]
 position = Vector2(960, 540)
 

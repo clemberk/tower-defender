@@ -7,6 +7,7 @@ func _ready():
 	speed = 100
 	damage_per_hit = 2
 	hit_rate = 1
+	base_coin_drop_amount = 5
 	
 	# run _ready function of parent class
 	super._ready()

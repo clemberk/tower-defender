@@ -112,5 +112,6 @@ func drop_coin(pos: Vector2):
 	
 	
 func die():
-	drop_coin.call_deferred(global_position)
+	for i in range(base_coin_drop_amount):
+		drop_coin.call_deferred(global_position)
 	queue_free()

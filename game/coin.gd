@@ -8,8 +8,6 @@ var max_gravitation_strength: float = 1800.00
 var friction: float = 0.995
 var target = null
 
-
-
 func _ready():
 	_animated_sprite.play("rotate")
 	area_entered.connect(_on_area_entered)

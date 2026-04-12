@@ -10,9 +10,14 @@ func _ready():
 	
 	center_turret()
 	get_viewport().size_changed.connect(center_turret)
+	
 	turret.health_changed.connect(ui_health_bar.update_health)
 	turret.health_depleted.connect(_on_turret_health_depleted)
+	turret.wealth_changed.connect(ui_container.update_wealth_display)
+	
 	ui_health_bar.setup(turret.max_health)
+	ui_container.update_wealth_display(turret.coins)
+	
 	randomize() # every new game should start with different rolls
 	
 func _on_turret_health_depleted():
