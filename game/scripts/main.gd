@@ -5,6 +5,7 @@ extends Node2D
 func _ready():
 	center_turret()
 	get_viewport().size_changed.connect(center_turret)
+	randomize() # every new game should start with different rolls
 	
 
 func center_turret():

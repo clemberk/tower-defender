@@ -59,6 +59,7 @@ func attack_target():
 	can_attack_atm = true
 	
 func take_damage(amount: float):
+	print("Damage Dealt: ", amount)
 	health -= amount
 	if health <= 0:
 		die()

@@ -21,5 +21,3 @@ func shoot():
 	
 	await get_tree().create_timer(1 / projectile.fire_rate).timeout
 	can_shoot_atm = true
-	
-	print("Shots fired!")
