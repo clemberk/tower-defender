@@ -1,6 +1,8 @@
 extends Area2D
 class_name Enemy
 
+@export var damage_number_label = preload("res://damage_number_label.tscn")
+
 @export var speed: float = 100.0
 @export var health: float = 100.0
 @export var damage_per_hit: float = 2.0
@@ -58,11 +60,33 @@ func attack_target():
 		
 	can_attack_atm = true
 	
-func take_damage(amount: float):
-	print("Damage Dealt: ", amount)
+func take_damage(amount: float, is_crit: bool):
 	health -= amount
+	spawn_damage_label(amount, is_crit)
+	show_hit_flash(is_crit)
+	
 	if health <= 0:
 		die()
 		
+		
+func show_hit_flash(is_crit: bool):
+	var tween = create_tween()
+	var flash_color = Color.WHITE
+	
+	if is_crit:
+		flash_color = Color.LIGHT_CORAL
+		
+	modulate = flash_color * 2.0
+	
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1).set_trans(Tween.TRANS_SINE)
+	
+	
+func spawn_damage_label(amount: float, is_crit: bool):
+	var damage_label = damage_number_label.instantiate()
+	get_tree().current_scene.add_child(damage_label)
+	
+	var label_position = global_position + Vector2(randf_range(-5,5), randf_range(-5,5))
+	damage_label.display_damage_number(amount, label_position, is_crit)
+	
 func die():
 	queue_free()

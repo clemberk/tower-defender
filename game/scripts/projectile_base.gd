@@ -31,7 +31,10 @@ func calculate_hit_damage():
 		hit_damage *= ((100.0 + crit_multiplier)/100.0)
 		print("CRIT!")
 		
-	return snapped(hit_damage, 0.1) # rounds hit_damage with one digit after comma
+	return {
+		"damage": snapped(hit_damage, 0.1), # rounds hit_damage with one digit after comma
+		"is_crit": hit_is_crit
+	}
 	
 	
 func execute_hit():
@@ -44,5 +47,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Enemy:
-		area.take_damage(calculate_hit_damage())
+		var enemy = area
+		var hit = calculate_hit_damage()
+		enemy.take_damage(hit.damage, hit.is_crit)
 		queue_free()
