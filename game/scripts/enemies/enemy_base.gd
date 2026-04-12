@@ -6,6 +6,7 @@ class_name Enemy
 
 
 @export var damage_number_label = preload("res://damage_number_label.tscn")
+@export var coin_scene = preload("res://coin.tscn")
 
 @export var speed: int = 100
 @export var max_health: int = 100
@@ -13,6 +14,7 @@ class_name Enemy
 @export var damage_per_hit: int = 2
 @export var hit_rate: int = 1
 @export var attack_dash_distancee: int = 15
+@export var base_coin_drop_amount: int = 1
 
 var target = null
 var can_attack_atm: bool = true
@@ -103,5 +105,12 @@ func spawn_damage_label(amount: float, is_crit: bool):
 	var label_position = global_position + Vector2(randf_range(-5,5), randf_range(-5,5))
 	damage_label.display_damage_number(amount, label_position, is_crit)
 	
+func drop_coin(pos: Vector2):
+	var coin = coin_scene.instantiate()
+	coin.global_position = pos
+	get_tree().current_scene.add_child(coin)
+	
+	
 func die():
+	drop_coin.call_deferred(global_position)
 	queue_free()

@@ -5,6 +5,10 @@ signal health_depleted
 
 var max_health: int = 100
 var current_health: int = 100
+var coins: int = 0
+
+func add_coin(amount: int):
+	coins+= amount
 
 	
 func take_damage(amount: int):
