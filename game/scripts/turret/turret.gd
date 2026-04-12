@@ -3,11 +3,11 @@ extends Area2D
 signal health_changed(new_value)
 signal health_depleted
 
-var max_health: float = 100.0
-var current_health: float = 100.0
+var max_health: int = 100
+var current_health: int = 100
 
 	
-func take_damage(amount: float):
+func take_damage(amount: int):
 	current_health -= amount
 	health_changed.emit(current_health)
 	

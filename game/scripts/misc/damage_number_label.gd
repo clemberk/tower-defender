@@ -1,6 +1,6 @@
 extends Label
 
-func display_damage_number(amount: float, pos: Vector2, is_crit: bool):
+func display_damage_number(amount: int, pos: Vector2, is_crit: bool):
 	text = str(amount)
 	global_position = pos
 	

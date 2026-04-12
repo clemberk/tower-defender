@@ -2,11 +2,11 @@ extends Area2D
 class_name Projectile
 
 
-@export var speed: float = 0.0
-@export var fire_rate: float = 0.0
-@export var damage_range: Vector2 = Vector2(0.0, 0.0)
-@export var crit_chance: float = 0.0
-@export var crit_multiplier: float = 0.0
+@export var speed: int = 0
+@export var fire_rate: int = 0
+@export var damage_range: Vector2 = Vector2(0, 0)
+@export var crit_chance: int = 0
+@export var crit_multiplier: int = 0
 
 
 func _process(delta: float):
@@ -19,20 +19,21 @@ func _on_body_entered(_body):
 	
 	
 func calculate_hit_damage():
-	var hit_damage: float = 0.0
+	var hit_damage: int = 0
 	var hit_is_crit: bool = false
 	
-	hit_damage = randf_range(damage_range.x, damage_range.y)
+	hit_damage = randi_range(int(damage_range.x), int(damage_range.y))
 	
 	if randf()*100 < crit_chance:
 		hit_is_crit = true
 		
 	if hit_is_crit:
-		hit_damage *= ((100.0 + crit_multiplier)/100.0)
+		var multiplier = (100.0 + crit_multiplier)/100.0
+		hit_damage = int(round(hit_damage * multiplier))
 		print("CRIT!")
 		
 	return {
-		"damage": snapped(hit_damage, 0.1), # rounds hit_damage with one digit after comma
+		"damage": hit_damage, # rounds hit_damage with one digit after comma
 		"is_crit": hit_is_crit
 	}
 	

@@ -7,15 +7,16 @@ class_name Enemy
 
 @export var damage_number_label = preload("res://damage_number_label.tscn")
 
-@export var speed: float = 100.0
-@export var health: float = 100.0
-@export var damage_per_hit: float = 2.0
-@export var hit_rate: float = 1.0
-@export var attack_dash_distancee: float = 15.0
+@export var speed: int = 100
+@export var max_health: int = 100
+@export var current_health: int = max_health
+@export var damage_per_hit: int = 2
+@export var hit_rate: int = 1
+@export var attack_dash_distancee: int = 15
 
 var target = null
 var can_attack_atm: bool = true
-var stop_distance: float = 50.0
+var stop_distance: int = 100
 
 func _ready():
 	var sprite = visuals.get_node("Sprite2D")
@@ -23,7 +24,7 @@ func _ready():
 	if sprite.texture:
 		var sprite_height = sprite.get_rect().size.y * sprite.scale.y
 		health_bar.global_position.y -= (sprite_height / 2.4)
-		health_bar.setup(health)
+		health_bar.setup(max_health)
 	
 	target = get_tree().current_scene.find_child("Turret", true, false)
 	if target == null:
@@ -65,19 +66,20 @@ func attack_target():
 		
 	tween.tween_property(self, "global_position", original_position, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	var tree = get_tree()
-	if tree:
-		await tree.create_timer(hit_rate).timeout
+	if is_inside_tree():
+		var tree = get_tree()
+		if tree:
+			await tree.create_timer(hit_rate).timeout
 		
 	can_attack_atm = true
 	
-func take_damage(amount: float, is_crit: bool):
-	health -= amount
-	health_bar.update_health(health)
+func take_damage(amount: int, is_crit: bool):
+	current_health -= amount
+	health_bar.update_health(current_health)
 	spawn_damage_label(amount, is_crit)
 	show_hit_flash(is_crit)
 	
-	if health <= 0:
+	if current_health <= 0:
 		die()
 		
 		

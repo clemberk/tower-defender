@@ -3,10 +3,10 @@ extends Projectile
 func _ready():
 	scale = Vector2(0.5, 0.5)
 	speed = 500
-	fire_rate = 5.0
-	damage_range = Vector2(10.0,20.0)
-	crit_chance = 5.0
-	crit_multiplier = 20.0
+	fire_rate = 3
+	damage_range = Vector2(30, 80)
+	crit_chance = 10
+	crit_multiplier = 100
 	
 
 func execute_hit():
