@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var goblin_enemy_scene = preload("res://goblin_enemy.tscn")
-@export var spawn_rate: float = 2.0
+@export var spawn_rate: float = 1.0
 
 @onready var spawn_timer = $SpawnTimer
 

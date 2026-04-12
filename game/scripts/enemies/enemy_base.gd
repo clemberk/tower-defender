@@ -1,6 +1,10 @@
 extends Area2D
 class_name Enemy
 
+@onready var health_bar = $HealthBar
+@onready var visuals = $Visuals
+
+
 @export var damage_number_label = preload("res://damage_number_label.tscn")
 
 @export var speed: float = 100.0
@@ -14,7 +18,14 @@ var can_attack_atm: bool = true
 var stop_distance: float = 50.0
 
 func _ready():
-	target = get_tree().current_scene.find_child("TurretPlatform", true, false)
+	var sprite = visuals.get_node("Sprite2D")
+	
+	if sprite.texture:
+		var sprite_height = sprite.get_rect().size.y * sprite.scale.y
+		health_bar.global_position.y -= (sprite_height / 2.4)
+		health_bar.setup(health)
+	
+	target = get_tree().current_scene.find_child("Turret", true, false)
 	if target == null:
 		print("Turret not found")
 	
@@ -27,7 +38,7 @@ func _process(delta):
 	if distance_to_target > stop_distance:
 		var direction = (target.global_position - global_position).normalized()
 		global_position += direction * speed * delta
-		look_at(target.global_position)
+		visuals.look_at(target.global_position)
 	else:
 		if can_attack_atm:
 			attack_target()
@@ -62,6 +73,7 @@ func attack_target():
 	
 func take_damage(amount: float, is_crit: bool):
 	health -= amount
+	health_bar.update_health(health)
 	spawn_damage_label(amount, is_crit)
 	show_hit_flash(is_crit)
 	
@@ -74,7 +86,7 @@ func show_hit_flash(is_crit: bool):
 	var flash_color = Color.WHITE
 	
 	if is_crit:
-		flash_color = Color.LIGHT_CORAL
+		flash_color = Color.FIREBRICK
 		
 	modulate = flash_color * 2.0
 	
@@ -85,6 +97,7 @@ func spawn_damage_label(amount: float, is_crit: bool):
 	var damage_label = damage_number_label.instantiate()
 	get_tree().current_scene.add_child(damage_label)
 	
+	# randomize number position a little bit
 	var label_position = global_position + Vector2(randf_range(-5,5), randf_range(-5,5))
 	damage_label.display_damage_number(amount, label_position, is_crit)
 	
