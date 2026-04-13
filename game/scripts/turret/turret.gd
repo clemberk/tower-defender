@@ -14,20 +14,24 @@ var coins: int = 0
 var upgrades = {
 	"damage": {
 		"level": 1,
-		"base_cost": 50,
 		"current_cost": 50
 	},
 	"fire_rate": {
 		"level": 1,
-		"base_cost": 10,
 		"current_cost": 100
 	},
 	"crit_chance": {
 		"level": 1,
-		"base_cost": 75,
+		"current_cost": 75
+	},
+	"crit_multiplier": {
+		"level": 1,
 		"current_cost": 75
 	}
 }	
+
+func _ready():
+	update_shop_ui()
 	
 func _process(_delta):
 	current_weapon.look_at(get_global_mouse_position())
@@ -49,6 +53,7 @@ func buy_upgrade(upgrade_name: String):
 		
 		apply_upgrade_to_weapon(upgrade_name)
 		wealth_changed.emit(coins)
+		update_shop_ui()
 	else:
 		"Not enough gold!"
 	
@@ -62,6 +67,22 @@ func apply_upgrade_to_weapon(upgrade_name: String):
 			current_weapon.crit_chance *= 1.5
 		"crit_multiplier":
 			current_weapon.crit_multiplier *= 1.5
+			
+func update_shop_ui():
+	var shop_buttons = get_tree().get_nodes_in_group("shop_buttons")
+	
+	for upgrade_name in upgrades:
+		var upgr = upgrades[upgrade_name]
+		
+		for btn in shop_buttons:
+			if btn.upgrade_type == upgrade_name:
+				btn.update_data(upgrade_name, upgr.level, upgr.current_cost)
+				
+				if not btn.pressed.is_connected(buy_upgrade):
+					btn.pressed.connect(buy_upgrade.bind(upgrade_name))
+					print("upgrade_name connected")
+		
+		
 		
 func add_coin(amount: int):
 	coins+= amount
@@ -78,19 +99,3 @@ func take_damage(amount: float):
 		
 func die():
 	queue_free()
-
-
-func _on_level_up_damage_button_pressed() -> void:
-	buy_upgrade("damage")
-
-
-func _on_level_up_fire_rate_button_pressed() -> void:
-	buy_upgrade("fire_rate")
-
-
-func _on_upgrade_crit_chance_btn_pressed() -> void:
-	buy_upgrade("crit_chance") 
-
-
-func _on_upgrade_crit_multiplier_btn_pressed() -> void:
-	buy_upgrade("crit_multiplier")
