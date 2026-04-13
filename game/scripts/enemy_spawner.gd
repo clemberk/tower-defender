@@ -3,6 +3,9 @@ extends Node2D
 @export var goblin_enemy_scene = preload("res://goblin_enemy.tscn")
 @export var ogre_enemy_scene = preload("res://ogre_enemy.tscn")
 
+@export var level_duration: float = 20.0
+var current_level: int = 1
+
 @onready var enemy_scenes: Dictionary = {
 	"goblin": goblin_enemy_scene,
 	"ogre": ogre_enemy_scene
@@ -15,12 +18,28 @@ var spawn_rates: Dictionary = {
 
 @export var spawn_rate: float = 1.0
 @onready var spawn_timer = $SpawnTimer
+@onready var level_timer = Timer.new()
 
 func _ready() -> void:
 	spawn_timer.wait_time = 1 / spawn_rate
 	
+	add_child(level_timer)
+	level_timer.wait_time = level_duration
+	level_timer.autostart = true
+	level_timer.timeout.connect(_on_level_timer_timeout)
+	level_timer.start()
+	
 func _on_spawn_timer_timeout():
 	spawn_enemy()
+
+func _on_level_timer_timeout():
+	current_level += 1
+	spawn_rate *= 1.5
+	
+	spawn_timer.wait_time = 1.0 / spawn_rate 
+	
+	if get_tree().current_scene.has_method("_on_level_up"):
+		get_tree().current_scene._on_level_up()
 	
 func spawn_enemy():
 	if !enemy_scenes: return
@@ -40,6 +59,12 @@ func spawn_instantiate(enemy_type: String):
 	if scene_to_spawn:
 		var enemy = scene_to_spawn.instantiate()
 		get_tree().current_scene.add_child(enemy)
+		
+		enemy.enemy_killed.connect(func(): 
+			if get_tree().current_scene.has_method("_on_enemy_killed"):
+				get_tree().current_scene._on_enemy_killed()
+		)
+		
 		enemy.global_position = get_random_border_position()
 		
 		

@@ -52,6 +52,14 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 32
 text = "Coins: 0"
 
+[node name="StatsLabel" type="Label" parent="UI/UIContainer" unique_id=859833399]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 111.0
+offset_right = 48.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 12
+
 [node name="ShopMenu" type="Panel" parent="UI" unique_id=878023394]
 process_mode = 3
 visible = false

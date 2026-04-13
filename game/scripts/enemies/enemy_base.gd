@@ -1,6 +1,8 @@
 extends Area2D
 class_name Enemy
 
+signal enemy_killed
+
 @onready var health_bar = $HealthBar
 @onready var visuals = $Visuals
 
@@ -114,4 +116,5 @@ func drop_coin(pos: Vector2):
 func die():
 	for i in range(base_coin_drop_amount):
 		drop_coin.call_deferred(global_position)
+	enemy_killed.emit()
 	queue_free()
