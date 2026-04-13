@@ -1,10 +1,10 @@
 extends Node
 class_name Weapon
 
-@export var fire_rate: int = 0
-@export var damage_range: Vector2 = Vector2(0, 0)
-@export var crit_chance: int = 0
-@export var crit_multiplier: int = 0
+@export var fire_rate: float = 0.0
+@export var damage_range: Vector2 = Vector2(0.0, 0.0)
+@export var crit_chance: float = 0.0
+@export var crit_multiplier: float = 0.0
 @export var projectile_scene: PackedScene
 @export var can_shoot_atm: bool = true
 

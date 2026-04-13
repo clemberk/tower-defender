@@ -8,17 +8,17 @@ class_name Enemy
 @export var damage_number_label = preload("res://damage_number_label.tscn")
 @export var coin_scene = preload("res://coin.tscn")
 
-@export var speed: int = 100
-@export var max_health: int = 100
-@export var current_health: int = max_health
-@export var damage_per_hit: int = 2
-@export var hit_rate: int = 1
-@export var attack_dash_distancee: int = 15
+@export var speed: float = 100
+@export var max_health: float = 100
+@export var current_health: float = max_health
+@export var damage_per_hit: float = 2
+@export var hit_rate: float = 1
+@export var attack_dash_distancee: float = 15
 @export var base_coin_drop_amount: int = 1
 
 var target = null
 var can_attack_atm: bool = true
-var stop_distance: int = 100
+var stop_distance: float = 100
 
 func _ready():
 	var sprite = visuals.get_node("Sprite2D")
@@ -75,7 +75,7 @@ func attack_target():
 		
 	can_attack_atm = true
 	
-func take_damage(amount: int, is_crit: bool):
+func take_damage(amount: float, is_crit: bool):
 	current_health -= amount
 	health_bar.update_health(current_health)
 	spawn_damage_label(amount, is_crit)

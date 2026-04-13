@@ -1,7 +1,7 @@
 extends Label
 
-func display_damage_number(amount: int, pos: Vector2, is_crit: bool):
-	text = str(amount)
+func display_damage_number(amount: float, pos: Vector2, is_crit: bool):
+	text = str(int(amount))
 	global_position = pos
 	
 	var tween = create_tween()

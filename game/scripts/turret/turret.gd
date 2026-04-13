@@ -7,8 +7,8 @@ signal health_changed(new_value)
 signal health_depleted
 signal wealth_changed(new_amount)
 
-var max_health: int = 100
-var current_health: int = 100
+var max_health: float = 100.0
+var current_health: float = 100.0
 var coins: int = 0
 
 var upgrades = {
@@ -68,7 +68,7 @@ func add_coin(amount: int):
 	wealth_changed.emit(coins)
 
 	
-func take_damage(amount: int):
+func take_damage(amount: float):
 	current_health -= amount
 	health_changed.emit(current_health)
 		
