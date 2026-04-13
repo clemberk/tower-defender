@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dppeedss3sgob"]
+
+[ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://enemy_base.tscn" id="1_bbh08"]
+[ext_resource type="Script" uid="uid://bj77otrgtc5u6" path="res://ogre_enemy.gd" id="2_121yg"]
+[ext_resource type="Texture2D" uid="uid://nym8cbqwfsge" path="res://assets/sprites/ogre_enemy.png" id="2_btxph"]
+
+[node name="Ogre" unique_id=583505661 instance=ExtResource("1_bbh08")]
+script = ExtResource("2_121yg")
+
+[node name="Sprite2D" parent="Visuals" parent_id_path=PackedInt32Array(536144575) index="0" unique_id=1327293335]
+texture = ExtResource("2_btxph")

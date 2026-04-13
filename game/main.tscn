@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://klkmkrqxyg8u"]
 
-[ext_resource type="Script" uid="uid://fbgcyj45yd5o" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://turret.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://cnqbwfyxlwgnx" path="res://assets/pixelorama/platform64.png" id="2_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://cqrmco1b4jr8l" path="res://assets/pixelorama/red_cannon.png" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://fbgcyj45yd5o" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://health_bar.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c7b7bxfdnvynp" path="res://turret.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://gqtrj1o2m7jm" path="res://ui_container.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://cq7h2y4sdub32" path="res://shop_menu.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://shop_button.tscn" id="5_272bh"]
+[ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/enemy_spawner.gd" id="5_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=1157097587]
 script = ExtResource("1_h2yge")
@@ -20,11 +23,96 @@ grow_vertical = 2
 color = Color(0.06053035, 0.06053035, 0.060530342, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="TurretPlatform" type="Sprite2D" parent="." unique_id=29566080]
-position = Vector2(570, 325)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_1bvp3")
+[node name="UI" type="CanvasLayer" parent="." unique_id=649932979]
 
-[node name="Cannon" type="Sprite2D" parent="TurretPlatform" unique_id=278762946]
-texture = ExtResource("3_1bvp3")
-script = ExtResource("1_ig7tw")
+[node name="UIContainer" type="Control" parent="UI" unique_id=111282558]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_lquwl")
+
+[node name="HealthBar" parent="UI/UIContainer" unique_id=62297238 instance=ExtResource("2_1bvp3")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 204.0
+offset_bottom = 21.0
+
+[node name="WealthLabel" type="Label" parent="UI/UIContainer" unique_id=428341457]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Coins: 0"
+
+[node name="StatsLabel" type="Label" parent="UI/UIContainer" unique_id=859833399]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 111.0
+offset_right = 48.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 12
+
+[node name="ShopMenu" type="Panel" parent="UI" unique_id=878023394]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7mycd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ShopMenu" unique_id=624740419]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -33.0
+offset_right = 73.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeDamageBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=161313994 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+layout_mode = 2
+upgrade_type = "damage"
+
+[node name="UpgradeFireRateBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=249463875 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+layout_mode = 2
+upgrade_type = "fire_rate"
+
+[node name="UpgradeCritChanceBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=101755719 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+layout_mode = 2
+upgrade_type = "crit_chance"
+
+[node name="UpgradeCritMultiplierBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=1347637099 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+layout_mode = 2
+upgrade_type = "crit_multiplier"
+
+[node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("2_h2yge")]
+position = Vector2(960, 540)
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=909357923]
+script = ExtResource("5_lquwl")
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=1320975664]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqrmco1b4jr8l"
-path="res://.godot/imported/red_cannon.png-2a697a8bc9aa1a1bdbc41fa657119900.ctex"
+uid="uid://b7oibxxwgu7yl"
+path="res://.godot/imported/GoldCoinSpinning.png-bbe6af12565e7846e895f18715a23916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pixelorama/red_cannon.png"
-dest_files=["res://.godot/imported/red_cannon.png-2a697a8bc9aa1a1bdbc41fa657119900.ctex"]
+source_file="res://assets/sprites/sprite_sheets/GoldCoinSpinning.png"
+dest_files=["res://.godot/imported/GoldCoinSpinning.png-bbe6af12565e7846e895f18715a23916.ctex"]
 
 [params]
 

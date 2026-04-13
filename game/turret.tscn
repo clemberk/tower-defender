@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c7b7bxfdnvynp"]
+
+[ext_resource type="Texture2D" uid="uid://cnqbwfyxlwgnx" path="res://assets/sprites/platform64.png" id="1_coqkk"]
+[ext_resource type="Script" uid="uid://ox6t1f77fcgj" path="res://scripts/turret/turret.gd" id="2_2kw7u"]
+[ext_resource type="Texture2D" uid="uid://cqrmco1b4jr8l" path="res://assets/sprites/red_cannon.png" id="3_mhatg"]
+[ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://scripts/weapons/cannon.gd" id="4_coqkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcf7x"]
+size = Vector2(44, 45)
+
+[node name="Turret" type="Area2D" unique_id=1089022710]
+script = ExtResource("2_2kw7u")
+
+[node name="TurretPlatform" type="Sprite2D" parent="." unique_id=2036031694]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_coqkk")
+
+[node name="Cannon" type="Sprite2D" parent="TurretPlatform" unique_id=1340892485]
+texture = ExtResource("3_mhatg")
+script = ExtResource("4_coqkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314056201]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_rcf7x")
