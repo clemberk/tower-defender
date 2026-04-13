@@ -5,7 +5,7 @@ extends Area2D
 var velocity: Vector2 = Vector2.ZERO
 var gravitation_strength: float = 600.0
 var max_gravitation_strength: float = 1800.00
-var friction: float = 0.995
+var friction: float = 0.99
 var target = null
 
 func _ready():
@@ -24,13 +24,11 @@ func _process(delta: float):
 		global_position += velocity * delta
 	
 func launch_coin():
-	var random_angle = deg_to_rad(randf_range(-135, -45))
-	print(random_angle)
-	var force = randf_range(600, 1200)
+	var random_angle = deg_to_rad(randf_range(-180, 180))
+	var force = randf_range(300, 600)
 	velocity = Vector2.from_angle(random_angle) * force
 	
 func _on_area_entered(area):
 	if area.name == "Turret" or area.has_method("add_coin"):
 		area.add_coin(1)
-		print("+1 coin")		
 		queue_free()

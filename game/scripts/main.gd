@@ -3,6 +3,7 @@ extends Node2D
 @onready var turret = $Turret
 @onready var ui_container = $UI/UIContainer
 @onready var ui_health_bar = $UI/UIContainer/HealthBar
+@onready var shop_menu = $UI/ShopMenu
 
 
 func _ready():

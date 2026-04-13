@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://health_bar.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c7b7bxfdnvynp" path="res://turret.tscn" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://gqtrj1o2m7jm" path="res://ui_container.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://cq7h2y4sdub32" path="res://shop_menu.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/enemy_spawner.gd" id="5_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=1157097587]
@@ -50,6 +51,53 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 32
 text = "Coins: 0"
 
+[node name="ShopMenu" type="Panel" parent="UI" unique_id=878023394]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7mycd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ShopMenu" unique_id=624740419]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -33.0
+offset_right = 73.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeDamageBtn" type="Button" parent="UI/ShopMenu/VBoxContainer" unique_id=396403414]
+layout_mode = 2
+text = "Upgrade Damage"
+
+[node name="UpgradeFireRateBtn" type="Button" parent="UI/ShopMenu/VBoxContainer" unique_id=1190856501]
+layout_mode = 2
+text = "Upgrade Fire Rate"
+
+[node name="UpgradeCritChanceBtn" type="Button" parent="UI/ShopMenu/VBoxContainer" unique_id=178536474]
+layout_mode = 2
+text = "Upgrade Crit Chance"
+
+[node name="UpgradeCritMultiplierBtn" type="Button" parent="UI/ShopMenu/VBoxContainer" unique_id=2058129293]
+layout_mode = 2
+text = "Upgrade Crit Multipier
+"
+
 [node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("2_h2yge")]
 position = Vector2(960, 540)
 
@@ -59,4 +107,8 @@ script = ExtResource("5_lquwl")
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=1320975664]
 autostart = true
 
+[connection signal="pressed" from="UI/ShopMenu/VBoxContainer/UpgradeDamageBtn" to="Turret" method="_on_level_up_damage_button_pressed"]
+[connection signal="pressed" from="UI/ShopMenu/VBoxContainer/UpgradeFireRateBtn" to="Turret" method="_on_level_up_fire_rate_button_pressed"]
+[connection signal="pressed" from="UI/ShopMenu/VBoxContainer/UpgradeCritChanceBtn" to="Turret" method="_on_upgrade_crit_chance_btn_pressed"]
+[connection signal="pressed" from="UI/ShopMenu/VBoxContainer/UpgradeCritMultiplierBtn" to="Turret" method="_on_upgrade_crit_multiplier_btn_pressed"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

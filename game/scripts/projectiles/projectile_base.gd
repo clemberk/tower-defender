@@ -3,11 +3,10 @@ class_name Projectile
 
 
 @export var speed: int = 0
-@export var fire_rate: int = 0
-@export var damage_range: Vector2 = Vector2(0, 0)
-@export var crit_chance: int = 0
-@export var crit_multiplier: int = 0
 
+var damage_range: Vector2
+var crit_chance: int
+var crit_multiplier: int
 
 func _process(delta: float):
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -30,7 +29,6 @@ func calculate_hit_damage():
 	if hit_is_crit:
 		var multiplier = (100.0 + crit_multiplier)/100.0
 		hit_damage = int(round(hit_damage * multiplier))
-		print("CRIT!")
 		
 	return {
 		"damage": hit_damage, # rounds hit_damage with one digit after comma
