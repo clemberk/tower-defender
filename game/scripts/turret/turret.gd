@@ -63,9 +63,9 @@ func buy_upgrade(upgrade_name: String):
 func apply_upgrade_to_weapon(upgrade_name: String):
 	match upgrade_name:
 		"damage":
-			current_weapon.damage_range *= Vector2(1.5, 1.5)
+			current_weapon.damage_range *= Vector2(1.2, 1.2)
 		"fire_rate":
-			current_weapon.fire_rate *= 1.5
+			current_weapon.fire_rate *= 1.2
 		"crit_chance":
 			current_weapon.crit_chance *= 1.5
 		"crit_multiplier":

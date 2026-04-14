@@ -1,12 +1,10 @@
 extends Area2D
 class_name Enemy
 
-signal enemy_killed
-
 @onready var health_bar = $HealthBar
 @onready var visuals = $Visuals
+@onready var collision_shape = $CollisionShape2D
 @onready var _audio: AudioStreamPlayer = $AudioStreamPlayer
-
 
 @export var damage_number_label = preload("res://damage_number_label.tscn")
 @export var coin_scene = preload("res://coin.tscn")
@@ -19,9 +17,14 @@ signal enemy_killed
 @export var attack_dash_distancee: float = 15
 @export var base_coin_drop_amount: int = 1
 
+var type: String = ""
 var target = null
 var can_attack_atm: bool = true
-var stop_distance: float = 100
+var stop_distance: float = 100.0
+var velocity: Vector2 = Vector2(0.0, 0.0)
+
+var is_walking: bool = false
+var is_attacking: bool = true
 
 func _ready():
 	var sprite = visuals.get_node("Sprite2D")
@@ -35,6 +38,10 @@ func _ready():
 	if target == null:
 		print("Turret not found")
 	
+func scale_enemy(factor:float):
+	collision_shape.scale *= factor
+	visuals.scale *= factor
+	
 func _process(delta):
 	if not target:
 		return
@@ -42,10 +49,24 @@ func _process(delta):
 	var distance_to_target = global_position.distance_to(target.global_position)
 	
 	if distance_to_target > stop_distance:
+		is_walking = true
+		is_attacking = false
 		var direction = (target.global_position - global_position).normalized()
-		global_position += direction * speed * delta
-		visuals.look_at(target.global_position)
+		velocity = direction * speed * delta
+		global_position += velocity
+
+		if not visuals.has_node("AnimationPlayer"):
+			visuals.look_at(target.global_position)
+		else:
+			if velocity.x < 0:
+				visuals.scale.x = -abs(visuals.scale.x)
+				visuals.scale.y = -abs(visuals.scale.y)
+			else:
+				visuals.scale.x = abs(visuals.scale.x)
+				
 	else:
+		is_walking = false
+		is_attacking = true
 		if can_attack_atm:
 			attack_target()
 			
@@ -66,7 +87,8 @@ func attack_target():
 	
 	if target.has_method("take_damage"):
 		target.take_damage(damage_per_hit)
-		_audio.play()
+		if is_inside_tree():
+			_audio.play()
 		
 	print("Enemy hits turret! Damage: ", damage_per_hit)
 		
@@ -118,5 +140,6 @@ func drop_coin(pos: Vector2):
 func die():
 	for i in range(base_coin_drop_amount):
 		drop_coin.call_deferred(global_position)
-	enemy_killed.emit()
+	if get_tree().current_scene.has_method("_on_enemy_killed"):
+		get_tree().current_scene._on_enemy_killed(type)
 	queue_free()

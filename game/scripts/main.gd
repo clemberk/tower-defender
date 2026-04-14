@@ -35,12 +35,15 @@ func format_time(time_in_seconds: float) -> String:
 	return "%d:%02d" % [minutes, seconds]
 	
 	
-func _on_enemy_killed():
+func _on_enemy_killed(enemy_name):
 	kill_count += 1
 	
-	var dying_sound_index = randi_range(1, 4)
-	var sound = load("res://assets/audio/dying_" + str(dying_sound_index) + ".mp3")
+	var sound: Resource
 	
+	if enemy_name == "Goblin" or enemy_name == "Ogre":
+		var dying_sound_index = randi_range(1, 4)
+		sound = load("res://assets/audio/dying_" + str(dying_sound_index) + ".mp3")
+		
 	var temp_audio = AudioStreamPlayer.new()
 	add_child(temp_audio)
 	

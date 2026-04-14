@@ -133,6 +133,7 @@ radius = 17.0
 script = ExtResource("1_0t63x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92722569]
+z_index = 2
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_bt4n8")
 animation = &"rotate"

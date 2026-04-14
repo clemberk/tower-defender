@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brtq7k45jqg8"
-path="res://.godot/imported/NightBorne.png-e163139e9281a1b1f96f6460167d5674.ctex"
+uid="uid://cafetdj8qcjwl"
+path="res://.godot/imported/nightborne_die.png-0ef8fe42fbc07d7870d37ae56c50dcbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sprite_sheets/NightBorne.png"
-dest_files=["res://.godot/imported/NightBorne.png-e163139e9281a1b1f96f6460167d5674.ctex"]
+source_file="res://assets/sprites/sprite_sheets/nightborne/nightborne_die.png"
+dest_files=["res://.godot/imported/nightborne_die.png-0ef8fe42fbc07d7870d37ae56c50dcbc.ctex"]
 
 [params]
 

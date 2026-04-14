@@ -1,7 +1,8 @@
 extends Enemy
 
 func _ready():
-	scale = Vector2(1.0, 1.0)
+	type = "Ogre"
+	scale_enemy(1.0)
 	max_health = 200.0
 	current_health = 200.0
 	speed = 50.0

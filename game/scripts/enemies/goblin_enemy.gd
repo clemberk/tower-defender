@@ -1,7 +1,8 @@
 extends Enemy
 
 func _ready():
-	scale = Vector2(0.75, 0.75)
+	type = "Goblin"
+	scale_enemy(0.75)
 	max_health = 100.0
 	current_health = 100.0
 	speed = 100.0

@@ -2,6 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://enemy_base.tscn" id="1_ug3ma"]
 [ext_resource type="Script" uid="uid://iiv0saabr4yf" path="res://scripts/enemies/goblin_enemy.gd" id="2_fhu5r"]
+[ext_resource type="PackedScene" uid="uid://c5jqi6305ah2g" path="res://damage_number_label.tscn" id="3_xbtf4"]
+[ext_resource type="PackedScene" uid="uid://tlvqirh1jeqa" path="res://coin.tscn" id="4_jw0cd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhu5r"]
+radius = 61.008198
 
 [node name="Goblin" unique_id=583505661 instance=ExtResource("1_ug3ma")]
 script = ExtResource("2_fhu5r")
+damage_number_label = ExtResource("3_xbtf4")
+coin_scene = ExtResource("4_jw0cd")
+speed = 100.0
+max_health = 100.0
+damage_per_hit = 2.0
+hit_rate = 1.0
+attack_dash_distancee = 15.0
+base_coin_drop_amount = 1
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1929615640]
+shape = SubResource("CircleShape2D_fhu5r")
