@@ -5,6 +5,7 @@ signal enemy_killed
 
 @onready var health_bar = $HealthBar
 @onready var visuals = $Visuals
+@onready var _audio: AudioStreamPlayer = $AudioStreamPlayer
 
 
 @export var damage_number_label = preload("res://damage_number_label.tscn")
@@ -65,6 +66,7 @@ func attack_target():
 	
 	if target.has_method("take_damage"):
 		target.take_damage(damage_per_hit)
+		_audio.play()
 		
 	print("Enemy hits turret! Damage: ", damage_per_hit)
 		

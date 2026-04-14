@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1d12t685vlys" path="res://scripts/enemies/enemy_base.gd" id="1_8nqel"]
 [ext_resource type="Texture2D" uid="uid://c2mloe75nig2r" path="res://assets/sprites/goblin_enemy.png" id="2_edvsq"]
 [ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://health_bar.tscn" id="3_8njqh"]
+[ext_resource type="AudioStream" uid="uid://bphx70n781t5e" path="res://assets/audio/enemy_hit.mp3" id="4_oscad"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xjto"]
 radius = 61.204575
@@ -21,3 +22,7 @@ texture = ExtResource("2_edvsq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1929615640]
 shape = SubResource("CircleShape2D_5xjto")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1885353140]
+stream = ExtResource("4_oscad")
+max_polyphony = 5

@@ -38,6 +38,18 @@ func format_time(time_in_seconds: float) -> String:
 func _on_enemy_killed():
 	kill_count += 1
 	
+	var dying_sound_index = randi_range(1, 4)
+	var sound = load("res://assets/audio/dying_" + str(dying_sound_index) + ".mp3")
+	
+	var temp_audio = AudioStreamPlayer.new()
+	add_child(temp_audio)
+	
+	temp_audio.stream = sound
+	temp_audio.play()
+	
+	temp_audio.finished.connect(temp_audio.queue_free)
+
+	
 func _on_level_up():
 	current_level += 1
 
