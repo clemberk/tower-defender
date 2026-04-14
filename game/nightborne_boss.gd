@@ -10,8 +10,8 @@ var is_dead: bool = false
 func _ready():
 	type = "Nightborne"
 	scale_enemy(10.0)
-	max_health = 1000.0
-	current_health = 1000.0
+	max_health = 2000.0
+	current_health = 2000.0
 	speed = 50.0
 	damage_per_hit = 20.0
 	hit_rate = 2.0

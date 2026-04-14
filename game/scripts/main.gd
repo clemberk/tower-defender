@@ -69,15 +69,16 @@ func update_stats_label():
 
 	var avg_dmg = (weapon.damage_range.x + weapon.damage_range.y) / 2.0
 	var dps = avg_dmg * weapon.fire_rate
-
-	var text = "Time: " + format_time(time_elapsed) + "\n"
+	
+	var text: String = ""
+	text += "Time: " + format_time(time_elapsed) + "\n"
 	text += "Level: " + str(current_level) + "\n"
 	text += "Kills: " + str(kill_count) + "\n"
-	text += "Damage Range: " + str(weapon.damage_range.x) + " - " + str(weapon.damage_range.y) + "\n"
-	text += "DPS: " + str(snapped(dps, 0.1)) + "\n" # Auf 1 Nachkommastelle runden
-	text += "Fire Rate: " + str(weapon.fire_rate) + "/s\n"
-	text += "Crit Chance: " + str(weapon.crit_chance) + "%\n"
-	text += "Crit Multiplier: " + str(weapon.crit_multiplier) + "%"
+	text += "Damage Range: " + str(int(weapon.damage_range.x)) + " - " + str(int(weapon.damage_range.y)) + "\n"
+	text += "DPS: " + str(snapped(dps, 0.1)) + "\n" 
+	text += "Fire Rate: " + str(snapped(weapon.fire_rate, 0.1)) + "/s\n"
+	text += "Crit Chance: " + str(snapped(weapon.crit_chance, 0.1)) + "%\n"
+	text += "Crit Multiplier: " + str(snapped(weapon.crit_multiplier, 0.1)) + "%"
 
 	stats_label.text = text
 	

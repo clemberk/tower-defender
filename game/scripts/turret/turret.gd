@@ -15,19 +15,23 @@ var coins: int = 0
 var upgrades = {
 	"damage": {
 		"level": 1,
-		"current_cost": 50
+		"current_cost": 40,
+		"multiplier": 1.25
 	},
 	"fire_rate": {
 		"level": 1,
-		"current_cost": 100
+		"current_cost": 80,
+		"multiplier": 1.25
 	},
 	"crit_chance": {
 		"level": 1,
-		"current_cost": 75
+		"current_cost": 70,
+		"multiplier": 1.5
 	},
 	"crit_multiplier": {
 		"level": 1,
-		"current_cost": 75
+		"current_cost": 70,
+		"multiplier": 1.5
 	}
 }	
 
@@ -61,15 +65,16 @@ func buy_upgrade(upgrade_name: String):
 		"Not enough gold!"
 	
 func apply_upgrade_to_weapon(upgrade_name: String):
+	var multiplier = upgrades[upgrade_name]["multiplier"]
 	match upgrade_name:
 		"damage":
-			current_weapon.damage_range *= Vector2(1.2, 1.2)
+			current_weapon.damage_range *= multiplier
 		"fire_rate":
-			current_weapon.fire_rate *= 1.2
+			current_weapon.fire_rate *= multiplier
 		"crit_chance":
-			current_weapon.crit_chance *= 1.5
+			current_weapon.crit_chance *= multiplier
 		"crit_multiplier":
-			current_weapon.crit_multiplier *= 1.5
+			current_weapon.crit_multiplier *= multiplier
 			
 func update_shop_ui():
 	var shop_buttons = get_tree().get_nodes_in_group("shop_buttons")
@@ -79,7 +84,7 @@ func update_shop_ui():
 		
 		for btn in shop_buttons:
 			if btn.upgrade_type == upgrade_name:
-				btn.update_data(upgrade_name, upgr.level, upgr.current_cost)
+				btn.update_data(upgrade_name, upgr.multiplier, upgr.level, upgr.current_cost)
 				
 				if not btn.pressed.is_connected(buy_upgrade):
 					btn.pressed.connect(buy_upgrade.bind(upgrade_name))

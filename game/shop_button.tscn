@@ -148,15 +148,22 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = -2
 
-[node name="UpgradeNameLabel" type="Label" parent="InnerMargin/VBoxContainer" unique_id=592569888]
+[node name="HBoxContainer2" type="HBoxContainer" parent="InnerMargin/VBoxContainer" unique_id=67524632]
+layout_mode = 2
+
+[node name="UpgradeNameLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=592569888]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Damage"
 
+[node name="MultiplierLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1013269601]
+layout_mode = 2
+text = "(x 1.5)"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="InnerMargin/VBoxContainer" unique_id=267692943]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 34
 
 [node name="UpgradeLevelLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer" unique_id=1557981688]
 layout_mode = 2
@@ -166,7 +173,7 @@ text = "Level 1"
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InnerMargin/VBoxContainer/HBoxContainer/CoinIcon" unique_id=1783094164]
-position = Vector2(6, 12)
+position = Vector2(27, 12)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_i4576")
 animation = &"rotate"
