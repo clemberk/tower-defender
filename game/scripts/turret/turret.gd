@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var cannon = $TurretPlatform/Cannon
 @onready var current_weapon: Weapon = cannon
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 signal health_changed(new_value)
 signal health_depleted
@@ -32,12 +33,14 @@ var upgrades = {
 
 func _ready():
 	update_shop_ui()
+	audio_player.stream = load("res://assets/audio/cannon_shooting.mp3")
 	
 func _process(_delta):
 	current_weapon.look_at(get_global_mouse_position())
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and current_weapon.can_shoot_atm:
 		current_weapon.shoot_projectile()
+		audio_player.play()
 		
 	
 func buy_upgrade(upgrade_name: String):

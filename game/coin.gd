@@ -1,6 +1,7 @@
 extends Area2D
 
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var velocity: Vector2 = Vector2.ZERO
 var gravitation_strength: float = 600.0
@@ -31,4 +32,9 @@ func launch_coin():
 func _on_area_entered(area):
 	if area.name == "Turret" or area.has_method("add_coin"):
 		area.add_coin(1)
+		set_process(false)
+		visible = false
+		
+		_audio.play()
+		await _audio.finished
 		queue_free()

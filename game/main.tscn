@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cq7h2y4sdub32" path="res://shop_menu.gd" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://shop_button.tscn" id="5_272bh"]
 [ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/enemy_spawner.gd" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://c2yvnx67dfsma" path="res://assets/audio/bg_music.mp3" id="8_5vw27"]
 
 [node name="Main" type="Node2D" unique_id=1157097587]
 script = ExtResource("1_h2yge")
@@ -114,5 +115,11 @@ script = ExtResource("5_lquwl")
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=1320975664]
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1780309440]
+stream = ExtResource("8_5vw27")
+volume_db = -10.89
+autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
