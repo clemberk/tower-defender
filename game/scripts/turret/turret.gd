@@ -65,16 +65,9 @@ func buy_upgrade(upgrade_name: String):
 		"Not enough gold!"
 	
 func apply_upgrade_to_weapon(upgrade_name: String):
-	var multiplier = upgrades[upgrade_name]["multiplier"]
-	match upgrade_name:
-		"damage":
-			current_weapon.damage_range *= multiplier
-		"fire_rate":
-			current_weapon.fire_rate *= multiplier
-		"crit_chance":
-			current_weapon.crit_chance *= multiplier
-		"crit_multiplier":
-			current_weapon.crit_multiplier *= multiplier
+	var multiplier = upgrades[upgrade_name]["multiplier"]	
+	current_weapon[upgrade_name] *= multiplier
+
 			
 func update_shop_ui():
 	var shop_buttons = get_tree().get_nodes_in_group("shop_buttons")

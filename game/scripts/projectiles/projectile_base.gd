@@ -4,7 +4,7 @@ class_name Projectile
 
 @export var speed: float = 0.0
 
-var damage_range: Vector2
+var damage: Vector2
 var crit_chance: float
 var crit_multiplier: float
 
@@ -21,7 +21,7 @@ func calculate_hit_damage():
 	var hit_damage: float = 0
 	var hit_is_crit: bool = false
 	
-	hit_damage = randf_range(damage_range.x, damage_range.y)
+	hit_damage = randf_range(damage.x, damage.y)
 	
 	if randf()*100 < crit_chance:
 		hit_is_crit = true

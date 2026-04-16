@@ -67,14 +67,14 @@ func update_stats_label():
 	var weapon = turret.current_weapon
 	if not weapon: return
 
-	var avg_dmg = (weapon.damage_range.x + weapon.damage_range.y) / 2.0
+	var avg_dmg = (weapon.damage.x + weapon.damage.y) / 2.0
 	var dps = avg_dmg * weapon.fire_rate
 	
 	var text: String = ""
 	text += "Time: " + format_time(time_elapsed) + "\n"
 	text += "Level: " + str(current_level) + "\n"
 	text += "Kills: " + str(kill_count) + "\n"
-	text += "Damage Range: " + str(int(weapon.damage_range.x)) + " - " + str(int(weapon.damage_range.y)) + "\n"
+	text += "Damage Range: " + str(int(weapon.damage.x)) + " - " + str(int(weapon.damage.y)) + "\n"
 	text += "DPS: " + str(snapped(dps, 0.1)) + "\n" 
 	text += "Fire Rate: " + str(snapped(weapon.fire_rate, 0.1)) + "/s\n"
 	text += "Crit Chance: " + str(snapped(weapon.crit_chance, 0.1)) + "%\n"
