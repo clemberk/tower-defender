@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://y1uv585vk8fg"]
+
+[ext_resource type="Script" uid="uid://c0g7as8v8y41g" path="res://highscore_table.gd" id="1_6liqj"]
+
+[node name="HighscoreTable" type="CanvasLayer" unique_id=878358491]
+script = ExtResource("1_6liqj")
+
+[node name="HighscoreList" type="VBoxContainer" parent="." unique_id=1277047624]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="." unique_id=121285361]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.5
+offset_top = -31.0
+offset_right = 78.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

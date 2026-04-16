@@ -9,6 +9,14 @@ extends Node2D
 var time_elapsed: float = 0.0
 var kill_count: int = 0
 var current_level: int = 1
+var final_score: int = 0
+
+var dying_sounds = [
+	preload("res://assets/audio/dying_1.mp3"),
+	preload("res://assets/audio/dying_2.mp3"),
+	preload("res://assets/audio/dying_3.mp3"),
+	preload("res://assets/audio/dying_4.mp3")
+]
 
 func _ready():
 	ui_container.setup_ui_components(turret.max_health)
@@ -27,28 +35,25 @@ func _ready():
 	
 func _process(delta: float):
 	time_elapsed += delta
-	update_stats_label()
+	if not get_tree().paused and is_inside_tree():
+		update_stats_label()
 
 func format_time(time_in_seconds: float) -> String:
 	var minutes: int = int(time_in_seconds / 60)
 	var seconds: int = int(time_in_seconds) % 60
 	return "%d:%02d" % [minutes, seconds]
 	
+
 	
 func _on_enemy_killed(enemy_name):
 	kill_count += 1
 	
-	var sound: Resource
-	
-	if enemy_name == "Goblin" or enemy_name == "Ogre":
-		var dying_sound_index = randi_range(1, 4)
-		sound = load("res://assets/audio/dying_" + str(dying_sound_index) + ".mp3")
-		
 	var temp_audio = AudioStreamPlayer.new()
 	add_child(temp_audio)
 	
-	temp_audio.stream = sound
-	temp_audio.play()
+	if enemy_name == "Goblin" or enemy_name == "Ogre":
+		temp_audio.stream = dying_sounds.pick_random()
+		temp_audio.play()
 	
 	temp_audio.finished.connect(temp_audio.queue_free)
 
@@ -57,6 +62,20 @@ func _on_level_up():
 	current_level += 1
 
 func _on_turret_health_depleted():
+	final_score = int(time_elapsed) * kill_count
+	
+	get_tree().paused = true
+	
+	var highscore_panel = $UI/UIContainer/HighscorePanel
+	highscore_panel.show()
+	
+	if highscore_panel.has_node("HighscoreDisplayLabel"):
+		highscore_panel.get_node("HighscoreDisplayLabel").text = "Score: " + str(final_score)
+		
+	$UI/UIContainer/HighscorePanel/VBoxContainer/HighscoreName.grab_focus()
+	
+	SaveSystem.is_new_highscore(final_score)
+	
 	game_over()
 
 func center_turret():
@@ -69,8 +88,10 @@ func update_stats_label():
 
 	var avg_dmg = (weapon.damage.x + weapon.damage.y) / 2.0
 	var dps = avg_dmg * weapon.fire_rate
+	final_score = int(time_elapsed) * kill_count
 	
 	var text: String = ""
+	text += "Score: " + str(final_score) + "\n"
 	text += "Time: " + format_time(time_elapsed) + "\n"
 	text += "Level: " + str(current_level) + "\n"
 	text += "Kills: " + str(kill_count) + "\n"
@@ -85,4 +106,15 @@ func update_stats_label():
 func game_over():
 	turret.die()
 	print("Game Over")
-	get_tree().reload_current_scene()
+
+
+func _on_submit_highscore_pressed() -> void:
+	var p_name = $UI/UIContainer/HighscorePanel/VBoxContainer/HighscoreName.text
+	if p_name == "": p_name = "Anonymous"
+	
+	print("Highscore saved")
+	
+	SaveSystem.add_highscore(p_name, final_score)
+	
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://main_menu.tscn")

@@ -61,6 +61,35 @@ offset_right = 48.0
 offset_bottom = 134.0
 theme_override_font_sizes/font_size = 12
 
+[node name="HighscorePanel" type="Panel" parent="UI/UIContainer" unique_id=2028520267]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIContainer/HighscorePanel" unique_id=1945677129]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HighscoreDisplayLabel" type="Label" parent="UI/UIContainer/HighscorePanel/VBoxContainer" unique_id=105621536]
+layout_mode = 2
+text = "Score:"
+
+[node name="HighscoreName" type="LineEdit" parent="UI/UIContainer/HighscorePanel/VBoxContainer" unique_id=508133936]
+process_mode = 3
+layout_mode = 2
+
+[node name="SubmitHighscore" type="Button" parent="UI/UIContainer/HighscorePanel/VBoxContainer" unique_id=551135331]
+process_mode = 3
+layout_mode = 2
+text = "Submit"
+
 [node name="ShopMenu" type="Panel" parent="UI" unique_id=878023394]
 process_mode = 3
 visible = false
@@ -125,4 +154,5 @@ parameters/looping = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=18430152]
 max_polyphony = 5
 
+[connection signal="pressed" from="UI/UIContainer/HighscorePanel/VBoxContainer/SubmitHighscore" to="." method="_on_submit_highscore_pressed"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

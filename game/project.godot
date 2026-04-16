@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Tower Defender"
-run/main_scene="uid://klkmkrqxyg8u"
+run/main_scene="uid://dyfjxoq6b76rk"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SaveSystem="*uid://6v4gnai32mxo"
 
 [display]
 
