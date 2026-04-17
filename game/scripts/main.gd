@@ -79,8 +79,8 @@ func _on_turret_health_depleted():
 	game_over()
 
 func center_turret():
-	var viewport_size = get_viewport_rect().size
-	turret.position = viewport_size / 2
+	# var viewport_size = get_viewport_rect().size
+	turret.position = Vector2.ZERO
 
 func update_stats_label():
 	var weapon = turret.current_weapon

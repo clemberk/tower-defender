@@ -97,17 +97,15 @@ func spawn_instantiate(enemy_type: String):
 		
 		
 func get_random_border_position() -> Vector2:
-	var viewport_size = get_viewport_rect().size
-	
 	# 0: Top; 1: Right; 2: Bottom; 3: Left
 	var side = randi() % 4 
-	var pos = Vector2.ZERO
+	var radius = 1000
 	
 	match side:
-		0: pos = Vector2(randf_range(0, viewport_size.x), -50)
-		1: pos = Vector2(viewport_size.x + 50, randf_range(0, viewport_size.y))
-		2: pos = Vector2(randf_range(0, viewport_size.x), viewport_size.y + 50)
-		3: pos = Vector2(-50, randf_range(0, viewport_size.y))
+		0: return Vector2(randf_range(-radius, radius), -radius - 100) 
+		1: return Vector2(radius + 100, randf_range(-radius, radius))  
+		2: return Vector2(randf_range(-radius, radius), radius + 100)  
+		3: return Vector2(-radius - 100, randf_range(-radius, radius)) 
 		
-	return pos
+	return Vector2.ZERO
 	
