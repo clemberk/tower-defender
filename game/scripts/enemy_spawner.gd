@@ -108,10 +108,10 @@ func get_random_border_position() -> Vector2:
 	var radius = 1000
 	
 	match side:
-		0: return Vector2(randf_range(-radius, radius), -radius - 100) 
-		1: return Vector2(radius + 100, randf_range(-radius, radius))  
-		2: return Vector2(randf_range(-radius, radius), radius + 100)  
-		3: return Vector2(-radius - 100, randf_range(-radius, radius)) 
+		0: return Vector2(randf_range(-radius, radius), -radius) 
+		1: return Vector2(radius, randf_range(-radius, radius))  
+		2: return Vector2(randf_range(-radius, radius), radius)  
+		3: return Vector2(-radius, randf_range(-radius, radius)) 
 		
 	return Vector2.ZERO
 	

@@ -22,7 +22,7 @@ func save_scores():
 func add_highscore(player_name: String, score: int):
 	highscores.append({
 		"name": player_name, 
-		"score": str(int(score))
+		"score": int(score)
 		})
 	highscores.sort_custom(func(a,b): return a["score"] > b["score"])
 	
