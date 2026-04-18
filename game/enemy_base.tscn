@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bphx70n781t5e" path="res://assets/audio/enemy_hit.mp3" id="4_oscad"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oscad"]
-radius = 61.03278
+radius = 8.0
 
 [node name="EnemyBase" type="Area2D" unique_id=583505661]
 z_index = 1

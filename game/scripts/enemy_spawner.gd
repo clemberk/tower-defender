@@ -2,6 +2,8 @@ extends Node2D
 
 @export var goblin_enemy_scene = preload("res://goblin_enemy.tscn")
 @export var ogre_enemy_scene = preload("res://ogre_enemy.tscn")
+@export var orc_enemy_scene = preload("res://orc_enemy.tscn")
+@export var orc_rider_enemy_scene = preload("res://orc_rider_enemy.tscn")
 @export var nightborne_boss_scene = preload("res://nightborne_boss.tscn")
 
 @export var level_duration: float = 20.0
@@ -16,13 +18,17 @@ var enemy_health_multiplier: float = 1.0
 
 @onready var enemy_scenes: Dictionary = {
 	"goblin": goblin_enemy_scene,
+	"orc": orc_enemy_scene,
+	"orc_rider": orc_rider_enemy_scene,
 	"ogre": ogre_enemy_scene,
 	"nightborne": nightborne_boss_scene
 }
 
 var spawn_rates: Dictionary = {
-	"goblin": 70,
-	"ogre": 30,
+	#"goblin": 30,
+	"orc": 70,
+	"orc_rider": 30,
+	#"ogre": 20
 }
 
 func _ready() -> void:

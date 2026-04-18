@@ -51,7 +51,7 @@ func _on_enemy_killed(enemy_name):
 	var temp_audio = AudioStreamPlayer.new()
 	add_child(temp_audio)
 	
-	if enemy_name == "Goblin" or enemy_name == "Ogre":
+	if enemy_name == "Goblin" or enemy_name == "Ogre" or enemy_name == "Orc":
 		temp_audio.stream = dying_sounds.pick_random()
 		temp_audio.play()
 	

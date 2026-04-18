@@ -45,7 +45,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Enemy:
+	if area is Enemy or area is AnimatedEnemy:
 		var enemy = area
 		var hit = calculate_hit_damage()
 		enemy.take_damage(hit.damage, hit.is_crit)

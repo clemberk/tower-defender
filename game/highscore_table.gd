@@ -15,6 +15,7 @@ func update_highscore_table():
 		var entry = highscores[i]
 		
 		var row = HBoxContainer.new()
+		row.add_theme_constant_override("separation", 50)
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
 		var name_label = Label.new()
@@ -22,7 +23,7 @@ func update_highscore_table():
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
 		var score_label = Label.new()
-		score_label.text = str(entry["score"])
+		score_label.text = str(int(entry["score"]))
 		score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		
 		row.add_child(name_label)
