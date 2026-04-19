@@ -95,7 +95,7 @@ func update_stats_label():
 	text += "Time: " + format_time(time_elapsed) + "\n"
 	text += "Level: " + str(current_level) + "\n"
 	text += "Kills: " + str(kill_count) + "\n"
-	text += "Damage Range: " + str(int(weapon.damage.x)) + " - " + str(int(weapon.damage.y)) + "\n"
+	text += "Damage Range: " + str(int(weapon.damage.x * weapon.damage_multiplier)) + " - " + str(int(weapon.damage.y + weapon.damage_multiplier)) + "\n"
 	text += "DPS: " + str(snapped(dps, 0.1)) + "\n" 
 	text += "Fire Rate: " + str(snapped(weapon.fire_rate, 0.1)) + "/s\n"
 	text += "Crit Chance: " + str(snapped(weapon.crit_chance, 0.1)) + "%\n"

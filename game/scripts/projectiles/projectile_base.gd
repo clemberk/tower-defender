@@ -5,8 +5,10 @@ class_name Projectile
 @export var speed: float = 0.0
 
 var damage: Vector2
+var damage_multiplier: float
 var crit_chance: float
 var crit_multiplier: float
+
 
 func _process(delta: float):
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -23,15 +25,15 @@ func calculate_hit_damage():
 	
 	hit_damage = randf_range(damage.x, damage.y)
 	
+	hit_damage *= damage_multiplier
+	
 	if randf()*100 < crit_chance:
 		hit_is_crit = true
-		
-	if hit_is_crit:
 		var multiplier = (100.0 + crit_multiplier)/100.0
 		hit_damage = hit_damage * multiplier
 		
 	return {
-		"damage": hit_damage, # rounds hit_damage with one digit after comma
+		"damage": hit_damage,
 		"is_crit": hit_is_crit
 	}
 	

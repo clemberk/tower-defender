@@ -3,6 +3,7 @@ class_name Weapon
 
 @export var fire_rate: float = 0.0
 @export var damage: Vector2 = Vector2(0.0, 0.0)
+@export var damage_multiplier = 1.0
 @export var crit_chance: float = 0.0
 @export var crit_multiplier: float = 0.0
 @export var projectile_scene: PackedScene
@@ -16,6 +17,7 @@ func shoot_projectile():
 	var projectile = projectile_scene.instantiate()
 	
 	projectile.damage = self.damage
+	projectile.damage_multiplier = self.damage_multiplier
 	projectile.crit_chance = self.crit_chance
 	projectile.crit_multiplier = self.crit_multiplier
 	

@@ -157,7 +157,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Damage"
 
-[node name="MultiplierLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1013269601]
+[node name="NewValueLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1013269601]
 layout_mode = 2
 text = "(x 1.5)"
 
