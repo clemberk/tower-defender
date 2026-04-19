@@ -7,7 +7,6 @@
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7jlu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_62avb"]
-radius = 15.0
 
 [node name="AnimatedEnemyBase" type="Area2D" unique_id=583505661]
 z_index = 1

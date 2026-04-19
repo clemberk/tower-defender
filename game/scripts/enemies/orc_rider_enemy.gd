@@ -3,11 +3,11 @@ extends AnimatedEnemy
 func _ready():
 	type = "Orc Rider"
 	speed = 140.0
-	max_health = 200.0
+	max_health = 300.0
 	current_health = 300.0
-	damage_per_hit = 4.0
+	damage_per_hit = 5.0
 	hit_rate = 1.0
-	base_coin_drop_amount = 20
+	base_coin_drop_amount = 25
 	attack_animation_delay = 0.4
 	death_animation_delay = 0.0
 	attack_sound_path = "res://assets/audio/orc_rider_hit.mp3"

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://x5rp8wo2tcfv"]
 
-[ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://archive/enemy_base.tscn" id="1_ug3ma"]
-[ext_resource type="Script" uid="uid://iiv0saabr4yf" path="res://scripts/enemies/goblin_enemy.gd" id="2_fhu5r"]
+[ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://archive/enemy_base.tscn" id="1_gmapk"]
+[ext_resource type="Script" uid="uid://iiv0saabr4yf" path="res://archive/goblin_enemy.gd" id="2_5uyfe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fhu5r"]
 radius = 61.008198
 
-[node name="Goblin" unique_id=583505661 instance=ExtResource("1_ug3ma")]
-script = ExtResource("2_fhu5r")
+[node name="Goblin" unique_id=583505661 instance=ExtResource("1_gmapk")]
+script = ExtResource("2_5uyfe")
 attack_dash_distancee = 15.0
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=1929615640]

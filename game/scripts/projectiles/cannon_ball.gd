@@ -3,7 +3,7 @@ extends Projectile
 @onready var sprite = $Sprite2D
 
 func _ready():
-	scale = Vector2(4.0, 4.0)
+	scale = Vector2(2.0, 2.0)
 	speed = 500
 	
 	
