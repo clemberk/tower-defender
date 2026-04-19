@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://d4fgs6iy7ub2d"]
 
-[ext_resource type="PackedScene" uid="uid://c0n3ys3tq7g0q" path="res://animated_enemy_base.tscn" id="1_38m07"]
-[ext_resource type="Script" uid="uid://bltwp4bf67gkk" path="res://orc_rider_enemy.gd" id="2_88kqb"]
-[ext_resource type="Texture2D" uid="uid://bncce38s1j5wc" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Walk.png" id="2_npuxx"]
-[ext_resource type="Texture2D" uid="uid://efwejoltf1v1" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Attack01.png" id="3_8qtto"]
-[ext_resource type="Texture2D" uid="uid://6tyh1p1okdb4" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Death.png" id="3_npuxx"]
-[ext_resource type="Texture2D" uid="uid://6uvof1sixdfr" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Hurt.png" id="4_jcehy"]
-[ext_resource type="Texture2D" uid="uid://enihrrrlurl2" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Idle.png" id="7_bh6hc"]
+[ext_resource type="PackedScene" uid="uid://c0n3ys3tq7g0q" path="res://scenes/enemies/animated_enemy_base.tscn" id="1_d3h0v"]
+[ext_resource type="Script" uid="uid://bltwp4bf67gkk" path="res://scripts/enemies/orc_rider_enemy.gd" id="2_aavct"]
+[ext_resource type="Texture2D" uid="uid://bncce38s1j5wc" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Walk.png" id="3_m6aru"]
+[ext_resource type="Texture2D" uid="uid://efwejoltf1v1" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Attack01.png" id="4_jgwjw"]
+[ext_resource type="Texture2D" uid="uid://6tyh1p1okdb4" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Death.png" id="5_gr48a"]
+[ext_resource type="Texture2D" uid="uid://6uvof1sixdfr" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Hurt.png" id="6_gx3jk"]
+[ext_resource type="Texture2D" uid="uid://enihrrrlurl2" path="res://assets/sprites/sprite_sheets/orc_rider/Orc rider-Idle.png" id="7_jf73g"]
 
 [sub_resource type="Animation" id="Animation_npuxx"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_npuxx")]
+"values": [ExtResource("3_m6aru")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_8qtto")]
+"values": [ExtResource("4_jgwjw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_npuxx")]
+"values": [ExtResource("5_gr48a")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jcehy")]
+"values": [ExtResource("6_gx3jk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -181,7 +181,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_bh6hc")]
+"values": [ExtResource("7_jf73g")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -222,7 +222,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_npuxx")]
+"values": [ExtResource("3_m6aru")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -259,11 +259,11 @@ _data = {
 &"run": SubResource("Animation_38m07")
 }
 
-[node name="OrcRider" unique_id=583505661 instance=ExtResource("1_38m07")]
-script = ExtResource("2_88kqb")
+[node name="OrcRider" unique_id=583505661 instance=ExtResource("1_d3h0v")]
+script = ExtResource("2_aavct")
 
 [node name="Sprite2D" parent="Visuals" parent_id_path=PackedInt32Array(536144575) index="0" unique_id=1327293335]
-texture = ExtResource("2_npuxx")
+texture = ExtResource("3_m6aru")
 hframes = 8
 
 [node name="AnimationPlayer" parent="Visuals" parent_id_path=PackedInt32Array(536144575) index="1" unique_id=639245159]

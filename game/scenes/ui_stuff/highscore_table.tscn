@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://y1uv585vk8fg"]
 
-[ext_resource type="Script" uid="uid://c0g7as8v8y41g" path="res://highscore_table.gd" id="1_6liqj"]
+[ext_resource type="Script" uid="uid://c0g7as8v8y41g" path="res://scripts/ui_stuff/highscore_table.gd" id="1_8sge6"]
 
 [node name="HighscoreTable" type="CanvasLayer" unique_id=878358491]
-script = ExtResource("1_6liqj")
+script = ExtResource("1_8sge6")
 
 [node name="HighscoreList" type="VBoxContainer" parent="." unique_id=1277047624]
 anchors_preset = 8

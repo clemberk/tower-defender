@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c0n3ys3tq7g0q"]
 
-[ext_resource type="Script" uid="uid://dwas1kvjnjy1f" path="res://scripts/enemies/animated_enemy_base.gd" id="1_c4n7o"]
-[ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://health_bar.tscn" id="2_6dnqw"]
-[ext_resource type="AudioStream" uid="uid://bphx70n781t5e" path="res://assets/audio/enemy_hit.mp3" id="4_g7jlu"]
+[ext_resource type="Script" uid="uid://dwas1kvjnjy1f" path="res://scripts/enemies/animated_enemy_base.gd" id="1_fvlq5"]
+[ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://scenes/ui_stuff/health_bar.tscn" id="2_mwbv7"]
+[ext_resource type="AudioStream" uid="uid://bphx70n781t5e" path="res://assets/audio/enemy_hit.mp3" id="3_6i5in"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7jlu"]
 
@@ -11,9 +11,9 @@ radius = 15.0
 
 [node name="AnimatedEnemyBase" type="Area2D" unique_id=583505661]
 z_index = 1
-script = ExtResource("1_c4n7o")
+script = ExtResource("1_fvlq5")
 
-[node name="HealthBar" parent="." unique_id=62297238 instance=ExtResource("2_6dnqw")]
+[node name="HealthBar" parent="." unique_id=62297238 instance=ExtResource("2_mwbv7")]
 z_index = 2
 
 [node name="Visuals" type="Node2D" parent="." unique_id=536144575]
@@ -28,5 +28,5 @@ libraries/ = SubResource("AnimationLibrary_g7jlu")
 shape = SubResource("CircleShape2D_62avb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1885353140]
-stream = ExtResource("4_g7jlu")
+stream = ExtResource("3_6i5in")
 max_polyphony = 5

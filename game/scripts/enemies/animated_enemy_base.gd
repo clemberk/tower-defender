@@ -11,8 +11,8 @@ signal defeated
 @onready var _animation: AnimationPlayer = $Visuals/AnimationPlayer
 @onready var _audio: AudioStreamPlayer = $AudioStreamPlayer
 
-@export var damage_number_label = preload("res://damage_number_label.tscn")
-@export var coin_scene = preload("res://coin.tscn")
+@export var damage_number_label = preload("res://scenes/ui_stuff/damage_number_label.tscn")
+@export var coin_scene = preload("res://scenes/items/coin.tscn")
 
 @export var type: String = ""
 @export var speed: float = 100

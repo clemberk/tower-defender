@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c7b7bxfdnvynp"]
+
+[ext_resource type="Script" uid="uid://ox6t1f77fcgj" path="res://scripts/turret/turret.gd" id="2_2kw7u"]
+[ext_resource type="Texture2D" uid="uid://dgtstlvou7jy2" path="res://assets/sprites/turret_platfrom.png" id="2_coqkk"]
+[ext_resource type="PackedScene" uid="uid://cw366qlhuqf5b" path="res://scenes/weapons/cannon.tscn" id="3_2kw7u"]
+[ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://scripts/weapons/cannon.gd" id="4_coqkk"]
+[ext_resource type="PackedScene" uid="uid://b6820cc4colg0" path="res://scenes/projectiles/cannon_ball.tscn" id="5_mhatg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcf7x"]
+size = Vector2(64, 48.25)
+
+[node name="Turret" type="Area2D" unique_id=1089022710]
+script = ExtResource("2_2kw7u")
+
+[node name="TurretPlatform" type="Sprite2D" parent="." unique_id=2036031694]
+scale = Vector2(4, 4)
+texture = ExtResource("2_coqkk")
+
+[node name="Cannon" parent="TurretPlatform" unique_id=1847757082 instance=ExtResource("3_2kw7u")]
+script = ExtResource("4_coqkk")
+cannon_ball_scene = ExtResource("5_mhatg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314056201]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_rcf7x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=80224312]
+volume_db = -11.435

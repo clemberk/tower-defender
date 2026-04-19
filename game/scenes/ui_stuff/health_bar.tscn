@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://iwe72wqqp25u"]
 
-[ext_resource type="Script" uid="uid://dgoky1lrmqgyr" path="res://scripts/misc/health_bar.gd" id="1_m7ell"]
+[ext_resource type="Script" uid="uid://dgoky1lrmqgyr" path="res://scripts/ui_stuff/health_bar.gd" id="1_0h3rf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7igj3"]
 bg_color = Color(0.79624295, 0.796243, 0.7962429, 1)
@@ -16,4 +16,4 @@ offset_bottom = 4.0
 theme_override_styles/background = SubResource("StyleBoxFlat_7igj3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m7ell")
 show_percentage = false
-script = ExtResource("1_m7ell")
+script = ExtResource("1_0h3rf")

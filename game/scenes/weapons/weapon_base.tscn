@@ -6,3 +6,5 @@
 script = ExtResource("1_i2bdm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=200865127]
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=1454423489]

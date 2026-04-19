@@ -1,6 +1,6 @@
 extends Weapon
 
-@export var cannon_ball_scene = preload("res://cannon_ball.tscn")
+@export var cannon_ball_scene = preload("res://scenes/projectiles/cannon_ball.tscn")
 
 
 func _ready():

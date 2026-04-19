@@ -1,21 +1,21 @@
 [gd_scene format=4 uid="uid://klkmkrqxyg8u"]
 
-[ext_resource type="Script" uid="uid://fbgcyj45yd5o" path="res://scripts/main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://health_bar.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c7b7bxfdnvynp" path="res://turret.tscn" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://gqtrj1o2m7jm" path="res://ui_container.gd" id="2_lquwl"]
-[ext_resource type="Script" uid="uid://cq7h2y4sdub32" path="res://shop_menu.gd" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://shop_button.tscn" id="5_272bh"]
-[ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/enemy_spawner.gd" id="5_lquwl"]
-[ext_resource type="AudioStream" uid="uid://c2yvnx67dfsma" path="res://assets/audio/bg_music.mp3" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://bat5dy0tiyflh" path="res://camera.gd" id="9_kek77"]
-[ext_resource type="Texture2D" uid="uid://bfae7fjwohpdv" path="res://assets/sprites/sprite_sheets/ground/Cliff_Tile.png" id="10_ycdy4"]
-[ext_resource type="Texture2D" uid="uid://bj6ditkdukcbx" path="res://assets/sprites/sprite_sheets/ground/Grass_Middle.png" id="11_w48qg"]
-[ext_resource type="Texture2D" uid="uid://b83vfbh4srsol" path="res://assets/sprites/sprite_sheets/ground/Water_Middle.png" id="12_vivmo"]
-[ext_resource type="Texture2D" uid="uid://bnltw1tm0atvb" path="res://assets/sprites/sprite_sheets/ground/Water_Tile.png" id="13_2cqfq"]
+[ext_resource type="Script" uid="uid://fbgcyj45yd5o" path="res://scripts/misc/main.gd" id="1_trceg"]
+[ext_resource type="Texture2D" uid="uid://bfae7fjwohpdv" path="res://assets/sprites/sprite_sheets/ground/Cliff_Tile.png" id="2_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bj6ditkdukcbx" path="res://assets/sprites/sprite_sheets/ground/Grass_Middle.png" id="3_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://b83vfbh4srsol" path="res://assets/sprites/sprite_sheets/ground/Water_Middle.png" id="4_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://bnltw1tm0atvb" path="res://assets/sprites/sprite_sheets/ground/Water_Tile.png" id="5_muem4"]
+[ext_resource type="Script" uid="uid://gqtrj1o2m7jm" path="res://scripts/ui_stuff/ui_container.gd" id="6_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://scenes/ui_stuff/health_bar.tscn" id="7_0ld40"]
+[ext_resource type="Script" uid="uid://cq7h2y4sdub32" path="res://scripts/ui_stuff/shop_menu.gd" id="8_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://scenes/ui_stuff/shop_button.tscn" id="9_yc10j"]
+[ext_resource type="PackedScene" uid="uid://c7b7bxfdnvynp" path="res://scenes/turret.tscn" id="10_jscy8"]
+[ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/misc/enemy_spawner.gd" id="11_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://c2yvnx67dfsma" path="res://assets/audio/bg_music.mp3" id="12_y6deb"]
+[ext_resource type="Script" uid="uid://bat5dy0tiyflh" path="res://scripts/ui_stuff/camera.gd" id="13_og1vs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaehf"]
-texture = ExtResource("10_ycdy4")
+texture = ExtResource("2_a8y0u")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -34,15 +34,15 @@ texture = ExtResource("10_ycdy4")
 2:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_074og"]
-texture = ExtResource("11_w48qg")
+texture = ExtResource("3_jkv2x")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cegan"]
-texture = ExtResource("12_vivmo")
+texture = ExtResource("4_jbj1t")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_82xsv"]
-texture = ExtResource("13_2cqfq")
+texture = ExtResource("5_muem4")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -67,7 +67,7 @@ sources/2 = SubResource("TileSetAtlasSource_cegan")
 sources/3 = SubResource("TileSetAtlasSource_82xsv")
 
 [node name="Main" type="Node2D" unique_id=1157097587]
-script = ExtResource("1_h2yge")
+script = ExtResource("1_trceg")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1129273290]
 offset_left = -1000.0
@@ -90,9 +90,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_lquwl")
+script = ExtResource("6_dp3eg")
 
-[node name="HealthBar" parent="UI/UIContainer" unique_id=62297238 instance=ExtResource("2_1bvp3")]
+[node name="HealthBar" parent="UI/UIContainer" unique_id=62297238 instance=ExtResource("7_0ld40")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
@@ -161,7 +161,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_7mycd")
+script = ExtResource("8_gqmmt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ShopMenu" unique_id=624740419]
 layout_mode = 1
@@ -177,32 +177,32 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradeDamageBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=161313994 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+[node name="UpgradeDamageBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=161313994 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "damage"
 
-[node name="UpgradeFireRateBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=249463875 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+[node name="UpgradeFireRateBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=249463875 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "fire_rate"
 
-[node name="UpgradeCritChanceBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=101755719 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+[node name="UpgradeCritChanceBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=101755719 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "crit_chance"
 
-[node name="UpgradeCritMultiplierBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=1347637099 groups=["shop_buttons"] instance=ExtResource("5_272bh")]
+[node name="UpgradeCritMultiplierBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=1347637099 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "crit_multiplier"
 
-[node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("2_h2yge")]
+[node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("10_jscy8")]
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=909357923]
-script = ExtResource("5_lquwl")
+script = ExtResource("11_pm3ni")
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=1320975664]
 autostart = true
 
 [node name="BackGroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1780309440]
-stream = ExtResource("8_5vw27")
+stream = ExtResource("12_y6deb")
 volume_db = -10.89
 autoplay = true
 parameters/looping = true
@@ -211,7 +211,7 @@ parameters/looping = true
 max_polyphony = 5
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=579757577]
-script = ExtResource("9_kek77")
+script = ExtResource("13_og1vs")
 
 [connection signal="pressed" from="UI/UIContainer/HighscorePanel/VBoxContainer/SubmitHighscore" to="." method="_on_submit_highscore_pressed"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

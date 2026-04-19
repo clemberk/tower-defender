@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://sq768r4ll2lo"]
 
-[ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://enemy_base.tscn" id="1_7ycar"]
-[ext_resource type="Script" uid="uid://bp2dri02gqbrv" path="res://orc_enemy.gd" id="2_47l7l"]
-[ext_resource type="Texture2D" uid="uid://by7o0kgap2xkq" path="res://assets/sprites/sprite_sheets/orc/Orc-Idle.png" id="3_u5hpn"]
+[ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://archive/enemy_base.tscn" id="1_ptp0d"]
+[ext_resource type="Script" uid="uid://bp2dri02gqbrv" path="res://scripts/enemies/orc_enemy.gd" id="2_lkqia"]
+[ext_resource type="Texture2D" uid="uid://by7o0kgap2xkq" path="res://assets/sprites/sprite_sheets/orc/Orc-Idle.png" id="3_ojvu8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ycar"]
 load_path = "res://.godot/imported/Orc-Walk.png-cf1eb13605219baf6ba9e87878e809ca.ctex"
@@ -189,7 +189,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_u5hpn")]
+"values": [ExtResource("3_ojvu8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -266,8 +266,8 @@ _data = {
 &"run": SubResource("Animation_ays17")
 }
 
-[node name="Orc" unique_id=583505661 instance=ExtResource("1_7ycar")]
-script = ExtResource("2_47l7l")
+[node name="Orc" unique_id=583505661 instance=ExtResource("1_ptp0d")]
+script = ExtResource("2_lkqia")
 
 [node name="Sprite2D" parent="Visuals" parent_id_path=PackedInt32Array(536144575) index="0" unique_id=1327293335]
 texture = SubResource("CompressedTexture2D_7ycar")

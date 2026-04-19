@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dppeedss3sgob"]
+
+[ext_resource type="PackedScene" uid="uid://cm7v4o2t80ju3" path="res://archive/enemy_base.tscn" id="1_82yr2"]
+[ext_resource type="Script" uid="uid://bj77otrgtc5u6" path="res://archive/ogre_enemy.gd" id="2_ptmr0"]
+[ext_resource type="Texture2D" uid="uid://nym8cbqwfsge" path="res://assets/sprites/ogre_enemy.png" id="3_m4vqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_121yg"]
+radius = 61.03278
+
+[node name="Ogre" unique_id=583505661 instance=ExtResource("1_82yr2")]
+script = ExtResource("2_ptmr0")
+attack_dash_distancee = 15.0
+
+[node name="Sprite2D" parent="Visuals" parent_id_path=PackedInt32Array(536144575) index="0" unique_id=1327293335]
+texture = ExtResource("3_m4vqi")
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1929615640]
+shape = SubResource("CircleShape2D_121yg")

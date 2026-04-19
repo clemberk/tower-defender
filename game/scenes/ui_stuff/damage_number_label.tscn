@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5jqi6305ah2g"]
 
-[ext_resource type="Script" uid="uid://vo8732jtfbhr" path="res://scripts/misc/damage_number_label.gd" id="1_hffbh"]
+[ext_resource type="Script" uid="uid://vo8732jtfbhr" path="res://scripts/ui_stuff/damage_number_label.gd" id="1_oi1gu"]
 
 [node name="DamageNumberLabel" type="Label" unique_id=446468712]
 z_index = 10
@@ -8,4 +8,4 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0.89627975, 0.78580695, 0.36486816, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 24
-script = ExtResource("1_hffbh")
+script = ExtResource("1_oi1gu")
