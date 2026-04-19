@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://gqtrj1o2m7jm" path="res://scripts/ui_stuff/ui_container.gd" id="6_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://scenes/ui_stuff/health_bar.tscn" id="7_0ld40"]
 [ext_resource type="Script" uid="uid://cq7h2y4sdub32" path="res://scripts/ui_stuff/shop_menu.gd" id="8_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://scenes/ui_stuff/shop_button.tscn" id="9_yc10j"]
+[ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://scenes/ui_stuff/shop_upgrade_button.tscn" id="9_yc10j"]
+[ext_resource type="PackedScene" uid="uid://cwnhwjr177wy5" path="res://scenes/ui_stuff/shop_item_button.tscn" id="10_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c7b7bxfdnvynp" path="res://scenes/turret.tscn" id="10_jscy8"]
 [ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/misc/enemy_spawner.gd" id="11_pm3ni"]
 [ext_resource type="AudioStream" uid="uid://c2yvnx67dfsma" path="res://assets/audio/bg_music.mp3" id="12_y6deb"]
@@ -177,21 +178,25 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradeDamageBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=161313994 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
+[node name="UpgradeDamageBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=161313994 groups=["shop_upgrade_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "damage"
 
-[node name="UpgradeFireRateBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=249463875 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
+[node name="UpgradeFireRateBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=249463875 groups=["shop_upgrade_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "fire_rate"
 
-[node name="UpgradeCritChanceBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=101755719 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
+[node name="UpgradeCritChanceBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=101755719 groups=["shop_upgrade_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "crit_chance"
 
-[node name="UpgradeCritMultiplierBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=1347637099 groups=["shop_buttons"] instance=ExtResource("9_yc10j")]
+[node name="UpgradeCritMultiplierBtn" parent="UI/ShopMenu/VBoxContainer" unique_id=1347637099 groups=["shop_upgrade_buttons"] instance=ExtResource("9_yc10j")]
 layout_mode = 2
 upgrade_type = "crit_multiplier"
+
+[node name="ShopItemButton" parent="UI/ShopMenu/VBoxContainer" unique_id=506517470 groups=["shop_item_buttons"] instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+item_type = "fork_stone"
 
 [node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("10_jscy8")]
 

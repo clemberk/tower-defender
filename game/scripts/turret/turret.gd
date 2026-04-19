@@ -12,6 +12,16 @@ var max_health: float = 100.0
 var current_health: float = 100.0
 var coins: int = 0
 
+var items = {
+	"fork_stone": {
+		"current_cost": 50,
+		"in_possesion": false,
+		"intensity": 1,
+		"amount": 2,
+		"spread": 90.0
+	}
+}
+
 var upgrades = {
 	"damage": {
 		"level": 1,
@@ -76,7 +86,20 @@ func calculate_asymptotic_value(upgrade_name: String) -> float:
 	
 	return lerp(upgr.start_value, upgr.max_value, curve)
 	
+func buy_item(item_name: String):
+	if not items.has(item_name):
+		return
+		
+	var item = items[item_name]
 	
+	if coins >= item.current_cost:
+		coins -= item.current_cost
+		item["in_possesion"] = true
+		wealth_changed.emit(coins)
+		print("Item bought")
+	else:
+		"Not enough gold!"
+
 func buy_upgrade(upgrade_name: String):
 	if not upgrades.has(upgrade_name):
 		return
@@ -87,7 +110,6 @@ func buy_upgrade(upgrade_name: String):
 		print("Max Level reached!")
 		return
 		
-	
 	if coins >= upgr.current_cost:
 		coins -= upgr.current_cost
 		upgr.level += 1
@@ -111,7 +133,8 @@ func apply_upgrade_to_weapon(upgrade_name: String):
 
 			
 func update_shop_ui():
-	var shop_buttons = get_tree().get_nodes_in_group("shop_buttons")
+	var shop_upgrade_buttons = get_tree().get_nodes_in_group("shop_upgrade_buttons")
+	var shop_item_buttons = get_tree().get_nodes_in_group("shop_item_buttons")
 	
 	for upgrade_name in upgrades:
 		var upgr = upgrades[upgrade_name]
@@ -123,7 +146,7 @@ func update_shop_ui():
 			next_val = calculate_asymptotic_value(upgrade_name)
 			upgr.level -= 1 
 		
-		for btn in shop_buttons:
+		for btn in shop_upgrade_buttons:
 			if btn.upgrade_type == upgrade_name:
 				btn.update_data(upgrade_name, next_val, upgr.level, upgr.current_cost)
 				
@@ -132,6 +155,15 @@ func update_shop_ui():
 				
 				if not btn.pressed.is_connected(buy_upgrade):
 					btn.pressed.connect(buy_upgrade.bind(upgrade_name))
+				
+	for item_name in items:
+		var item = items[item_name]
+			
+		for btn in shop_item_buttons:
+			if btn.item_type == item_name:
+				btn.update_data(item_name, item.current_cost)
+				btn.pressed.connect(buy_item.bind(item_name))
+			
 		
 func add_coin(amount: int):
 	coins+= amount

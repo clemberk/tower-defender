@@ -125,7 +125,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="ShopButton" type="MarginContainer" unique_id=759041722]
+[node name="ShopUpgradeButton" type="MarginContainer" unique_id=759041722]
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 0
