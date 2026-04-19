@@ -117,4 +117,4 @@ func _on_submit_highscore_pressed() -> void:
 	SaveSystem.add_highscore(p_name, final_score)
 	
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui_stuff/main_menu.tscn")

@@ -2,7 +2,7 @@ extends AnimatedEnemy
 
 func _ready():
 	type = "Nightborne"
-	scale_enemy(4.0)
+	scale_enemy(8.0)
 	max_health = 4000.0
 	current_health = 4000.0
 	speed = 120.0

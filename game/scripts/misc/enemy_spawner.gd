@@ -56,7 +56,7 @@ func _on_level_timer_timeout():
 	if current_level % 5 == 0:
 		start_boss_stage()
 	else:
-		spawn_rate *= 1.3
+		spawn_rate *= 1.1
 		spawn_timer.wait_time = 1.0 / spawn_rate 
 	
 	if get_tree().current_scene.has_method("_on_level_up"):
