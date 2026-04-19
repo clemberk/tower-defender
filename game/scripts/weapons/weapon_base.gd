@@ -40,7 +40,5 @@ func play_fire_animation():
 		
 		var time_between_shots = 1.0 / fire_rate
 		
-		print(anim_length, time_between_shots)
-		
 		animation_player.speed_scale = anim_length / time_between_shots *2
 		animation_player.play("shoot")

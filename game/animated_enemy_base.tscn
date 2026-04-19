@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0n3ys3tq7g0q"]
 
-[ext_resource type="Script" uid="uid://dwas1kvjnjy1f" path="res://animated_enemy_base.gd" id="1_c4n7o"]
+[ext_resource type="Script" uid="uid://dwas1kvjnjy1f" path="res://scripts/enemies/animated_enemy_base.gd" id="1_c4n7o"]
 [ext_resource type="PackedScene" uid="uid://iwe72wqqp25u" path="res://health_bar.tscn" id="2_6dnqw"]
 [ext_resource type="AudioStream" uid="uid://bphx70n781t5e" path="res://assets/audio/enemy_hit.mp3" id="4_g7jlu"]
 

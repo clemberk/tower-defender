@@ -81,7 +81,6 @@ func update_shop_ui():
 				
 				if not btn.pressed.is_connected(buy_upgrade):
 					btn.pressed.connect(buy_upgrade.bind(upgrade_name))
-					print("upgrade_name connected")
 		
 func add_coin(amount: int):
 	coins+= amount

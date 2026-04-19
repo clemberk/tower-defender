@@ -45,8 +45,8 @@ func _ready():
 		print("Turret not found")
 	
 func _process(delta):
-	if not target:
-		return
+	if not target: return
+	if is_dead: return
 		
 	var distance_to_target = global_position.distance_to(target.global_position)
 	
@@ -70,6 +70,7 @@ func _process(delta):
 			attack_target()
 			
 func _physics_process(_delta: float):
+	if not target: return
 	if is_dead: return
 	
 	if velocity.x < 0:
@@ -170,12 +171,15 @@ func drop_coin(pos: Vector2):
 	
 	
 func die():
-	velocity = Vector2(0.0,0.0)
 	if is_dead: return
-	defeated.emit()
 	is_dead = true
+	velocity = Vector2.ZERO
+	
+	defeated.emit()
 	
 	collision_shape.set_deferred("disabled", true)
+	_health_bar.hide()
+	
 	_animation.play("die")
 	
 	if death_sound_path != "":
@@ -183,14 +187,26 @@ func die():
 		_audio.play()
 		
 	if death_animation_delay > 0.0:
-		await get_tree().create_timer(1.3).timeout
+		await get_tree().create_timer(death_animation_delay).timeout
 	
 	for i in range(base_coin_drop_amount):
 		drop_coin.call_deferred(global_position)
+		
 	if get_tree().current_scene.has_method("_on_enemy_killed"):
 		get_tree().current_scene._on_enemy_killed(type)
 		
 	if _animation.is_playing():
 		await _animation.animation_finished
 		
-	queue_free()
+	start_corpse_fading()
+		
+func start_corpse_fading():
+	var tween = create_tween()
+	
+	var stay_time = randf_range(3.0, 5.0)
+	
+	tween.tween_interval(stay_time)
+	tween.tween_property(self, "modulate:a", 0.0, 2.0)
+	
+	tween.finished.connect(queue_free)
+		
