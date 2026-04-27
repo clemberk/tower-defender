@@ -13,6 +13,7 @@ extends Node2D
 var current_level: int = 1
 var is_boss_stage: bool = false
 var enemy_health_multiplier: float = 1.0
+var coin_drop_multiplier: float = 1.0
 
 @export var spawn_rate: float = 1.0
 @onready var spawn_timer = $SpawnTimer
@@ -89,6 +90,7 @@ func _on_boss_defeated():
 	level_timer.paused = false
 	
 	enemy_health_multiplier *= 2.0
+	coin_drop_multiplier *= 1.3
 	
 	spawn_rate *= 1.2
 	spawn_timer.wait_time = 1.0 / spawn_rate
@@ -103,7 +105,10 @@ func spawn_instantiate(enemy_type: String):
 		
 		if enemy.get("max_health"):
 			enemy.max_health *= enemy_health_multiplier
-			enemy.current_health = enemy.max_health
+			enemy.current_health *= enemy_health_multiplier 
+		
+		if enemy.get("base_coin_drop_amount"):
+			enemy.base_coin_drop_amount *= coin_drop_multiplier
 			
 		enemy.global_position = get_random_border_position()
 		

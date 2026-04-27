@@ -1,7 +1,5 @@
 extends Panel
 
-@onready var item_skilltree: Panel = $ItemSkillTree
-
 func _input(event):
 	if event.is_action_pressed("open_shop"):
 		var focus_owner = get_viewport().gui_get_focus_owner()
@@ -14,7 +12,6 @@ func _input(event):
 func toggle_shop():
 	if visible:
 		visible = !visible
-		item_skilltree.visible = !visible
 	else:
 		visible = true
 	get_tree().paused = visible

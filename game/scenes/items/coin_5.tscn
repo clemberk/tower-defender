@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://bs172l0hwks44"]
+
+[ext_resource type="Script" uid="uid://bja7en8ybchr5" path="res://scripts/items/coin.gd" id="1_tkyoy"]
+[ext_resource type="Texture2D" uid="uid://xyqdr3ri017f" path="res://assets/sprites/sprite_sheets/BlueCoinSpinning.png" id="2_tkyoy"]
+[ext_resource type="AudioStream" uid="uid://iia2jx04f3v3" path="res://assets/audio/coin_pick_up.mp3" id="3_nlc11"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il5pi"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlc11"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8iyq"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sy2n"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5dkj"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3d4l"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mucy"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mepm"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(64, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ystcv"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(72, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkq6y"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(80, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_757wy"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(168, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnoe8"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(160, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbh1s"]
+atlas = ExtResource("2_tkyoy")
+region = Rect2(152, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bt4n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il5pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlc11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8iyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sy2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5dkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3d4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5dkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mucy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mepm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ystcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkq6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8iyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8iyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5dkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_757wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnoe8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbh1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8iyq")
+}],
+"loop": true,
+"name": &"rotate",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwdf6"]
+radius = 17.0
+
+[node name="Coin" type="Area2D" unique_id=70387343]
+script = ExtResource("1_tkyoy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92722569]
+z_index = 2
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_bt4n8")
+animation = &"rotate"
+frame_progress = 0.15540268
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1487659288]
+shape = SubResource("CircleShape2D_dwdf6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=860031186]
+stream = ExtResource("3_nlc11")
+volume_db = -6.534
+pitch_scale = 0.8

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qdsr570rpn63" path="res://scripts/ui_stuff/shop_item_button.gd" id="1_p1dxo"]
 [ext_resource type="Texture2D" uid="uid://b7oibxxwgu7yl" path="res://assets/sprites/sprite_sheets/GoldCoinSpinning.png" id="2_7bhk3"]
 [ext_resource type="Texture2D" uid="uid://bysekk0nxwgvm" path="res://assets/sprites/items/Item__32.png" id="2_63aco"]
+[ext_resource type="PackedScene" uid="uid://b84qsv3dvhyl5" path="res://scenes/ui_stuff/item_skill_tree.tscn" id="4_umf1y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdq0q"]
 atlas = ExtResource("2_7bhk3")
@@ -130,9 +131,9 @@ animations = [{
 offset_right = 185.0
 offset_bottom = 79.0
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_p1dxo")
 
 [node name="Button" type="Button" parent="." unique_id=1361528341]
@@ -195,3 +196,7 @@ autoplay = "rotate"
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0.25882354, 1)
 text = "Open Skilltree"
+
+[node name="ItemSkillTree" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=795970155 instance=ExtResource("4_umf1y")]
+layout_mode = 2
+mouse_filter = 2

@@ -19,32 +19,32 @@ var coins: int = 0
 
 var items = {
 	"fork_stone": {
-		"current_cost": 50,
+		"current_cost": 800,
 		"in_possesion": false,
 		"upgrades": {
 			"chain_count": {
 				"current_value": 1,
 				"level": 1,
 				"max_level": 3,
-				"base_cost": 100,
+				"base_cost": 2000,
 				"cost_multiplier": 2.0,
 				"increment": 1
 			},
 			"amount": {
 				"current_value": 2,
 				"level": 1,
-				"max_level": 8,
-				"base_cost": 150,
+				"max_level": 5,
+				"base_cost": 1000,
 				"cost_multiplier": 1.8,
 				"increment": 1
 			},
 			"spread": {
-				"current_value": 90.0,
+				"current_value": 30.0,
 				"level": 1,
-				"max_level": 18,
-				"base_cost": 80,
-				"cost_multiplier": 1.4,
-				"increment": 15.0
+				"max_level": 15,
+				"base_cost": 100,
+				"cost_multiplier": 1.5,
+				"increment": 10.0
 			}
 		}
 	}
@@ -214,25 +214,24 @@ func update_shop_ui():
 			
 		for btn in shop_item_buttons:
 			if btn.item_type == item_name:
-				btn.update_data(item_name, item.current_cost)
+				btn.update_data(item_name, item.current_cost, item.in_possesion)
 				
-			if btn.pressed.is_connected(buy_item):
-				btn.pressed.disconnect(buy_item)
-			if btn.pressed.is_connected(open_item_skilltree):
-				btn.pressed.disconnect(open_item_skilltree)
-
-			if item.in_possesion:
-				btn.skilltree_label_is_visible = true
-				btn.pressed.connect(open_item_skilltree.bind(item_name))
-			else:
-				btn.skilltree_label_is_visible = false
-				btn.pressed.connect(buy_item.bind(item_name))
-			
+				if not btn.pressed.is_connected(_on_item_button_pressed):
+					btn.pressed.connect(_on_item_button_pressed.bind(item_name))
 		
+func _on_item_button_pressed(item_name: String):
+		var item = items[item_name]
+		if item.in_possesion:
+			open_item_skilltree(item_name)
+		else:
+			buy_item(item_name)
 		
 func open_item_skilltree(item_name: String):
-	skilltree_window.show()
-	update_item_skilltree_ui(item_name)
+	if skilltree_window.visible:
+		skilltree_window.hide()
+	else:
+		skilltree_window.show()
+		update_item_skilltree_ui(item_name)
 	
 func update_item_skilltree_ui(item_name: String):
 	for child in skilltree_upgrade_container.get_children():

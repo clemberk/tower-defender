@@ -123,7 +123,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"rotate",
-"speed": 20.0
+"speed": 16.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwdf6"]
@@ -137,7 +137,8 @@ z_index = 2
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_bt4n8")
 animation = &"rotate"
-frame_progress = 0.19185106
+autoplay = "rotate"
+frame_progress = 0.0013332433
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1487659288]
 shape = SubResource("CircleShape2D_dwdf6")

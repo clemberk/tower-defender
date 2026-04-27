@@ -96,7 +96,7 @@ func spawn_fork_projectiles(hit_enemy):
 		fork.fork_spread = self.fork_spread 
 		
 		get_tree().current_scene.call_deferred("add_child", fork)
-		fork.set_deferred("scale", current_scale * 0.8)
+		fork.set_deferred("scale", current_scale * 0.9)
 		
 		var timer = get_tree().create_timer(0.2)
 		timer.timeout.connect(_reset_last_hit_enemy.bind(fork))

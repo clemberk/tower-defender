@@ -3,7 +3,6 @@ extends Node2D
 @onready var turret = $Turret
 @onready var ui_container = $UI/UIContainer
 @onready var ui_health_bar = $UI/UIContainer/HealthBar
-@onready var shop_menu = $UI/ShopMenu
 @onready var stats_label = $UI/UIContainer/StatsLabel
 
 var time_elapsed: float = 0.0
@@ -11,7 +10,7 @@ var kill_count: int = 0
 var current_level: int = 1
 var final_score: int = 0
 
-var dying_sounds = [
+var humanoid_dying_sounds = [
 	preload("res://assets/audio/dying_1.mp3"),
 	preload("res://assets/audio/dying_2.mp3"),
 	preload("res://assets/audio/dying_3.mp3"),
@@ -51,9 +50,14 @@ func _on_enemy_killed(enemy_name):
 	var temp_audio = AudioStreamPlayer.new()
 	add_child(temp_audio)
 	
-	if enemy_name == "Goblin" or enemy_name == "Ogre" or enemy_name == "Orc":
-		temp_audio.stream = dying_sounds.pick_random()
-		temp_audio.play()
+	if enemy_name == "Orc" or enemy_name == "Orc Rider" or enemy_name == "Armored Orc" or enemy_name == "Armored Lumberjack":
+		temp_audio.stream = humanoid_dying_sounds.pick_random()
+	elif enemy_name == "Skeleton":
+		temp_audio.stream = load("res://assets/audio/skeleton_dying.mp3")
+	elif enemy_name == "Slime":
+		temp_audio.stream = load("res://assets/audio/slime_dying.mp3")
+		
+	temp_audio.play()
 	
 	temp_audio.finished.connect(temp_audio.queue_free)
 

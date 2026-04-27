@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://b84qsv3dvhyl5"]
 
-[ext_resource type="Script" uid="uid://ysynmmtoxd71" path="res://scenes/ui_stuff/item_skill_tree.gd" id="1_qcgbn"]
-
 [node name="ItemSkillTree" type="Panel" unique_id=795970155]
-offset_top = 36.0
-offset_bottom = 36.0
-script = ExtResource("1_qcgbn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1936282819]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1639396285]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1

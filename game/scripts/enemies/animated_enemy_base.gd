@@ -13,6 +13,7 @@ signal defeated
 
 @export var damage_number_label = preload("res://scenes/ui_stuff/damage_number_label.tscn")
 @export var coin_scene = preload("res://scenes/items/coin.tscn")
+@export var coin_5_scene = preload("res://scenes/items/coin_5.tscn")
 
 @export var type: String = ""
 @export var speed: float = 100
@@ -189,9 +190,8 @@ func die():
 		
 	if death_animation_delay > 0.0:
 		await get_tree().create_timer(death_animation_delay).timeout
-	
-	for i in range(base_coin_drop_amount):
-		drop_coin.call_deferred(global_position)
+		
+	execute_coin_drop_logic(base_coin_drop_amount)
 		
 	if get_tree().current_scene.has_method("_on_enemy_killed"):
 		get_tree().current_scene._on_enemy_killed(type)
@@ -201,6 +201,26 @@ func die():
 		
 	start_corpse_fading()
 		
+func execute_coin_drop_logic(drop_amount):
+	var total_amount = drop_amount
+	var fives = total_amount / 5     
+	var ones = total_amount % 5      
+	
+	# 5er Coins droppen
+	for i in range(fives):
+		drop_coin_by_type.call_deferred(global_position, coin_5_scene)
+		
+	# 1er Coins droppen
+	for i in range(ones):
+		drop_coin_by_type.call_deferred(global_position, coin_scene)
+	
+func drop_coin_by_type(pos: Vector2, scene_to_drop: PackedScene):
+	var coin = scene_to_drop.instantiate()
+	coin.global_position = pos
+	if scene_to_drop == coin_5_scene:
+		coin.coin_value = 5
+	get_tree().current_scene.add_child(coin)
+	
 func start_corpse_fading():
 	var tween = create_tween()
 	
