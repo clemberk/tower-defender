@@ -29,12 +29,12 @@ var enemy_health_multiplier: float = 1.0
 }
 
 var spawn_rates: Dictionary = {
-	"orc": 20,
+	"orc": 30,
 	"skeleton": 20,
 	"slime": 20,
 	"armored_orc": 10,
 	"armored_lumberjack": 10,
-	"orc_rider": 20,
+	"orc_rider": 10,
 }
 
 func _ready() -> void:

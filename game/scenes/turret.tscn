@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ox6t1f77fcgj" path="res://scripts/turret/turret.gd" id="2_2kw7u"]
 [ext_resource type="Texture2D" uid="uid://dgtstlvou7jy2" path="res://assets/sprites/turret_platfrom.png" id="2_coqkk"]
+[ext_resource type="PackedScene" uid="uid://d1idtbelvdh8k" path="res://scenes/ui_stuff/item_upgrade_button.tscn" id="2_dirdf"]
 [ext_resource type="PackedScene" uid="uid://cw366qlhuqf5b" path="res://scenes/weapons/cannon.tscn" id="3_2kw7u"]
 [ext_resource type="Script" uid="uid://chexwn18d2jq2" path="res://scripts/weapons/cannon.gd" id="4_coqkk"]
 [ext_resource type="PackedScene" uid="uid://b6820cc4colg0" path="res://scenes/projectiles/cannon_ball.tscn" id="5_mhatg"]
@@ -11,6 +12,7 @@ size = Vector2(64, 48.25)
 
 [node name="Turret" type="Area2D" unique_id=1089022710]
 script = ExtResource("2_2kw7u")
+item_upgrade_button_scene = ExtResource("2_dirdf")
 
 [node name="TurretPlatform" type="Sprite2D" parent="." unique_id=2036031694]
 scale = Vector2(4, 4)

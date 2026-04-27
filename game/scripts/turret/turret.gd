@@ -1,5 +1,10 @@
 extends Area2D
 
+@export var item_upgrade_button_scene: PackedScene
+
+@onready var skilltree_window = get_tree().current_scene.find_child("ItemSkillTree")
+@onready var skilltree_upgrade_container = skilltree_window.find_child("VBoxContainer")
+
 @onready var cannon = $TurretPlatform/Cannon
 @onready var current_weapon: Weapon = cannon
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -16,9 +21,32 @@ var items = {
 	"fork_stone": {
 		"current_cost": 50,
 		"in_possesion": false,
-		"intensity": 1,
-		"amount": 2,
-		"spread": 90.0
+		"upgrades": {
+			"chain_count": {
+				"current_value": 1,
+				"level": 1,
+				"max_level": 3,
+				"base_cost": 100,
+				"cost_multiplier": 2.0,
+				"increment": 1
+			},
+			"amount": {
+				"current_value": 2,
+				"level": 1,
+				"max_level": 8,
+				"base_cost": 150,
+				"cost_multiplier": 1.8,
+				"increment": 1
+			},
+			"spread": {
+				"current_value": 90.0,
+				"level": 1,
+				"max_level": 18,
+				"base_cost": 80,
+				"cost_multiplier": 1.4,
+				"increment": 15.0
+			}
+		}
 	}
 }
 
@@ -92,13 +120,38 @@ func buy_item(item_name: String):
 		
 	var item = items[item_name]
 	
+	if item.in_possesion:
+		print("Already owned!")
+		return
+	
 	if coins >= item.current_cost:
 		coins -= item.current_cost
 		item["in_possesion"] = true
 		wealth_changed.emit(coins)
+		update_shop_ui()
 		print("Item bought")
 	else:
 		print("Not enough gold!")
+		
+func buy_item_upgrade(item_name: String, upgrade_key: String):
+	var item = items[item_name]
+	var upgr = item.upgrades[upgrade_key]
+	
+	if upgr.level >= upgr.max_level: return
+	
+	var upgrade_cost = int(upgr.base_cost * pow(upgr.cost_multiplier, upgr.level - 1))
+	
+	if coins >= upgrade_cost:
+		coins -= upgrade_cost
+		upgr.level += 1
+		
+		upgr.current_value += upgr.increment
+		wealth_changed.emit(coins)
+		update_item_skilltree_ui(item_name)
+		update_shop_ui()
+	else:
+		print("Not enough gold!")
+	
 
 func buy_upgrade(upgrade_name: String):
 	if not upgrades.has(upgrade_name):
@@ -162,9 +215,46 @@ func update_shop_ui():
 		for btn in shop_item_buttons:
 			if btn.item_type == item_name:
 				btn.update_data(item_name, item.current_cost)
+				
+			if btn.pressed.is_connected(buy_item):
+				btn.pressed.disconnect(buy_item)
+			if btn.pressed.is_connected(open_item_skilltree):
+				btn.pressed.disconnect(open_item_skilltree)
+
+			if item.in_possesion:
+				btn.skilltree_label_is_visible = true
+				btn.pressed.connect(open_item_skilltree.bind(item_name))
+			else:
+				btn.skilltree_label_is_visible = false
 				btn.pressed.connect(buy_item.bind(item_name))
 			
 		
+		
+func open_item_skilltree(item_name: String):
+	skilltree_window.show()
+	update_item_skilltree_ui(item_name)
+	
+func update_item_skilltree_ui(item_name: String):
+	for child in skilltree_upgrade_container.get_children():
+		child.queue_free()
+		
+	var item = items[item_name]
+	
+	for upgr_key in item.upgrades:
+		var upgr = item.upgrades[upgr_key]
+		var btn = item_upgrade_button_scene.instantiate()
+		skilltree_upgrade_container.add_child(btn)
+		
+		var cost = upgr.base_cost * pow(upgr.cost_multiplier, upgr.level - 1)
+		
+		btn.text = upgr_key.capitalize() + " (Lvl) " + str(upgr.level) + ") - " + str(int(cost)) + "c"
+		
+		if upgr.level >= upgr.max_level:
+			btn.disabled = true
+			btn.text = upgr_key.capitalize() + " MAX"
+			
+		btn.pressed.connect(buy_item_upgrade.bind(item_name, upgr_key))
+	
 func add_coin(amount: int):
 	coins+= amount
 	wealth_changed.emit(coins)

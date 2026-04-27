@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://t1com3p05qhk" path="res://scenes/ui_stuff/shop_upgrade_button.tscn" id="9_yc10j"]
 [ext_resource type="PackedScene" uid="uid://cwnhwjr177wy5" path="res://scenes/ui_stuff/shop_item_button.tscn" id="10_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c7b7bxfdnvynp" path="res://scenes/turret.tscn" id="10_jscy8"]
+[ext_resource type="PackedScene" uid="uid://b84qsv3dvhyl5" path="res://scenes/ui_stuff/item_skill_tree.tscn" id="11_jkv2x"]
 [ext_resource type="Script" uid="uid://bpq3tecew15ut" path="res://scripts/misc/enemy_spawner.gd" id="11_pm3ni"]
 [ext_resource type="AudioStream" uid="uid://c2yvnx67dfsma" path="res://assets/audio/bg_music.mp3" id="12_y6deb"]
 [ext_resource type="Script" uid="uid://bat5dy0tiyflh" path="res://scripts/ui_stuff/camera.gd" id="13_og1vs"]
@@ -192,6 +193,18 @@ upgrade_type = "crit_multiplier"
 [node name="ShopItemButton" parent="UI/ShopMenu/VBoxContainer" unique_id=506517470 groups=["shop_item_buttons"] instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 item_type = "fork_stone"
+
+[node name="ItemSkillTree" parent="UI/ShopMenu" unique_id=795970155 instance=ExtResource("11_jkv2x")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Turret" parent="." unique_id=1089022710 instance=ExtResource("10_jscy8")]
 

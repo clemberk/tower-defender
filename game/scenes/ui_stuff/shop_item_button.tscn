@@ -172,18 +172,26 @@ text = "Fork Stone"
 [node name="HBoxContainer2" type="HBoxContainer" parent="InnerMargin/VBoxContainer" unique_id=946650259]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 34
 
-[node name="CoinIcon" type="Control" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=501989882]
+[node name="ItemPriceLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1605354447]
 layout_mode = 2
+text = "1000"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InnerMargin/VBoxContainer/HBoxContainer2/CoinIcon" unique_id=1142875982]
-position = Vector2(44, 12)
+[node name="CoinIcon" type="Control" parent="InnerMargin/VBoxContainer/HBoxContainer2/ItemPriceLabel" unique_id=501989882]
+anchors_preset = 0
+offset_left = 71.0
+offset_right = 71.0
+offset_bottom = 23.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InnerMargin/VBoxContainer/HBoxContainer2/ItemPriceLabel/CoinIcon" unique_id=1142875982]
+position = Vector2(-29.000002, 13)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_63aco")
 animation = &"rotate"
 autoplay = "rotate"
 
-[node name="ItemPriceLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1605354447]
+[node name="OpenSkilltreeLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1291540272]
 layout_mode = 2
-text = "1000"
+theme_override_colors/font_color = Color(1, 0, 0.25882354, 1)
+text = "Open Skilltree"

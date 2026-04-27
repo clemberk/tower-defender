@@ -27,9 +27,9 @@ func shoot_projectile():
 	
 	if fork_stone["in_possesion"] == true:
 		projectile.can_fork = true
-		projectile.fork_count = fork_stone["intensity"]
-		projectile.fork_amount = fork_stone["amount"]
-		projectile.fork_spread = fork_stone["spread"]
+		projectile.fork_chain_count = fork_stone.upgrades.chain_count.current_value
+		projectile.fork_amount = fork_stone.upgrades.amount.current_value
+		projectile.fork_spread = fork_stone.upgrades.spread.current_value
 	
 	get_tree().current_scene.add_child(projectile)
 	
