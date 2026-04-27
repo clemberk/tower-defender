@@ -140,6 +140,8 @@ func drop_coin(pos: Vector2):
 func die():
 	for i in range(base_coin_drop_amount):
 		drop_coin.call_deferred(global_position)
+		
+	z_index = -1
 	if get_tree().current_scene.has_method("_on_enemy_killed"):
 		get_tree().current_scene._on_enemy_killed(type)
 	queue_free()

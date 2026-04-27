@@ -98,7 +98,7 @@ func buy_item(item_name: String):
 		wealth_changed.emit(coins)
 		print("Item bought")
 	else:
-		"Not enough gold!"
+		print("Not enough gold!")
 
 func buy_upgrade(upgrade_name: String):
 	if not upgrades.has(upgrade_name):
@@ -119,7 +119,7 @@ func buy_upgrade(upgrade_name: String):
 		wealth_changed.emit(coins)
 		update_shop_ui()
 	else:
-		"Not enough gold!"
+		print("Not enough gold!")
 	
 func apply_upgrade_to_weapon(upgrade_name: String):
 	var new_value = calculate_asymptotic_value(upgrade_name)

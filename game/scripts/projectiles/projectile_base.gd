@@ -5,8 +5,8 @@ class_name Projectile
 @export var speed: float = 0.0
 
 # for fork_stone item
-var fork_count: int = 0
-var fork_amount: int = 10
+var fork_count: int = 4
+var fork_amount: int = 20
 var fork_spread: float = 360.0
 var can_fork: bool = false
 var last_hit_enemy = null

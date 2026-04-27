@@ -1,8 +1,138 @@
 [gd_scene format=3 uid="uid://cwnhwjr177wy5"]
 
 [ext_resource type="Script" uid="uid://qdsr570rpn63" path="res://scripts/ui_stuff/shop_item_button.gd" id="1_p1dxo"]
+[ext_resource type="Texture2D" uid="uid://b7oibxxwgu7yl" path="res://assets/sprites/sprite_sheets/GoldCoinSpinning.png" id="2_7bhk3"]
+[ext_resource type="Texture2D" uid="uid://bysekk0nxwgvm" path="res://assets/sprites/items/Item__32.png" id="2_63aco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdq0q"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14il"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4fra"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te2np"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1mwu"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1j4n"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf4yh"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciu18"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(64, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybu58"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(72, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5w7y"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(80, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klycs"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(152, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0eq0"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(160, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc8wr"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(168, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr34r"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(176, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dehl2"]
+atlas = ExtResource("2_7bhk3")
+region = Rect2(184, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63aco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdq0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w14il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4fra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1mwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1j4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1mwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf4yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciu18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybu58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5w7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klycs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0eq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc8wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0eq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr34r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dehl2")
+}],
+"loop": true,
+"name": &"rotate",
+"speed": 20.0
+}]
 
 [node name="ShopItemButton" type="MarginContainer" unique_id=506517470]
+offset_right = 185.0
+offset_bottom = 79.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
 script = ExtResource("1_p1dxo")
 
 [node name="Button" type="Button" parent="." unique_id=1361528341]
@@ -10,18 +140,50 @@ layout_mode = 2
 
 [node name="InnerMargin" type="MarginContainer" parent="." unique_id=1961912039]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InnerMargin" unique_id=290473004]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InnerMargin/VBoxContainer" unique_id=1896863129]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 30
+
+[node name="Control" type="Control" parent="InnerMargin/VBoxContainer/HBoxContainer" unique_id=142064767]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InnerMargin/VBoxContainer/HBoxContainer/Control" unique_id=1229357311]
+position = Vector2(12, 17)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_63aco")
 
 [node name="ItemNameLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer" unique_id=554039124]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Fork Stone"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="InnerMargin/VBoxContainer" unique_id=946650259]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="CoinIcon" type="Control" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=501989882]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InnerMargin/VBoxContainer/HBoxContainer2/CoinIcon" unique_id=1142875982]
+position = Vector2(44, 12)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_63aco")
+animation = &"rotate"
+autoplay = "rotate"
 
 [node name="ItemPriceLabel" type="Label" parent="InnerMargin/VBoxContainer/HBoxContainer2" unique_id=1605354447]
 layout_mode = 2
+text = "1000"

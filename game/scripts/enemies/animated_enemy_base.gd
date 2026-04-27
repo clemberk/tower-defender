@@ -180,6 +180,7 @@ func die():
 	collision_shape.set_deferred("disabled", true)
 	_health_bar.hide()
 	
+	z_index = -1
 	_animation.play("die")
 	
 	if death_sound_path != "":
